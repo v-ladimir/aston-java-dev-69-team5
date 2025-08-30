@@ -1,5 +1,6 @@
-package com.aston.edu.factory;
+package com.aston.edu.factory.random;
 
+import com.aston.edu.factory.ObjectCreator;
 import com.aston.edu.model.Animal;
 
 import java.util.Random;
