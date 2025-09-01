@@ -1,11 +1,8 @@
-package com.aston.edu.menu;
+package application;
 
-import com.aston.edu.model.*;
-import search.BinarySearch;
-
+import customClasses.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.Scanner;
 
 public class Menu {
