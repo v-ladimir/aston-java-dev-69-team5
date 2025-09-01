@@ -1,0 +1,8 @@
+volume - 100.0, storedMaterial - Вода, barrelMaterial - WOOD
+volume - 50.5, storedMaterial - Масло, barrelMaterial - STEEL
+volume - 200.0, storedMaterial - Песок, barrelMaterial - PLASTIC
+volume - 75.3, storedMaterial - Вино, barrelMaterial - WOOD
+volume - 150.0, storedMaterial - Бензин, barrelMaterial - STEEL
+volume - 25.0, storedMaterial - Мед, barrelMaterial - WOOD
+volume - 300.0, storedMaterial - Зерно, barrelMaterial - PLASTIC
+volume - 80.0, storedMaterial - Молоко, barrelMaterial - STEEL

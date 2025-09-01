@@ -5,6 +5,10 @@ import creators.ObjectCreatorProvider;
 import customClasses.Animal;
 import customClasses.Barrel;
 import customClasses.Person;
+import fillingStrategies.file.ObjectFileReader;
+import fillingStrategies.file.parsers.AnimalParser;
+import fillingStrategies.file.parsers.BarrelParser;
+import fillingStrategies.file.parsers.PersonParser;
 import fillingStrategies.manual.ManualAnimalCreator;
 import fillingStrategies.manual.ManualBarrelCreator;
 import fillingStrategies.manual.ManualPersonCreator;
@@ -50,6 +54,38 @@ public class InputService {
     public void fileInput() {
         System.out.println("Вызов метода наполнения коллекции из файла");
         // Реализация чтения из файла
+        collectionService.clearCollection();
+
+        switch (collectionService.getCollectionType()) {
+            case "Животное" -> {
+                try {
+                    collectionService.setCollection(
+                            new ObjectFileReader<>(new AnimalParser()).read());
+                } catch (IllegalArgumentException e) {
+                    System.out.println("Ошибка при чтении файла: " + e.getMessage());
+                    System.out.println("Некорректные значения в файле для заполнения коллекции типа Животное");
+                }
+            }
+            case "Бочка" -> {
+                try {
+                    collectionService.setCollection(
+                            new ObjectFileReader<>(new BarrelParser()).read());
+                } catch (IllegalArgumentException e) {
+                    System.out.println("Ошибка при чтении файла: " + e.getMessage());
+                    System.out.println("Некорректные значения в файле для заполнения коллекции типа Бочка");
+                }
+            }
+            case "Человек" -> {
+                try {
+                    collectionService.setCollection(
+                            new ObjectFileReader<>(new PersonParser()).read());
+                } catch (IllegalArgumentException e) {
+                    System.out.println("Ошибка при чтении файла: " + e.getMessage());
+                    System.out.println("Некорректные значения в файле для заполнения коллекции типа Человек");
+                }
+            }
+        }
+        System.out.println("Сгенерировано элементов: " + collectionService.getSize());
     }
 
     public void randomInput() {
