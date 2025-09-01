@@ -1,6 +1,6 @@
-package com.aston.edu.util.comparators;
+package sort.comparators;
 
-import com.aston.edu.model.Animal;
+import customClasses.Animal;
 
 import java.util.Comparator;
 
