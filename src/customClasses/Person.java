@@ -93,7 +93,7 @@ public class Person implements Comparable<Person>, Serializable {
         return lastName;
     }
 
-    public Comparator<Person> getComparator() {
+    public static Comparator<Person> getComparator() {
         return comparator;
     }
 
@@ -130,6 +130,6 @@ public class Person implements Comparable<Person>, Serializable {
 
     @Override
     public String toString() {
-        return lastName + ",age " + age + ", gender" + gender;
+        return "last name - " + lastName + ", age - " + age + ", gender - " + gender;
     }
 }
