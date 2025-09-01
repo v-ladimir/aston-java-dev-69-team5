@@ -1,7 +1,7 @@
-package com.aston.edu.factory.random;
+package fillingStrategies.random;
 
-import com.aston.edu.factory.ObjectCreator;
-import com.aston.edu.model.Animal;
+import creators.ObjectCreator;
+import customClasses.Animal;
 
 import java.util.Random;
 

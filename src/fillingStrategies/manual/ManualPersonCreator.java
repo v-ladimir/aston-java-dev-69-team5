@@ -1,8 +1,8 @@
-package com.aston.edu.factory.manual;
+package fillingStrategies.manual;
 
-import com.aston.edu.factory.ObjectCreator;
-import com.aston.edu.model.Person;
-import com.aston.edu.util.ConsoleUtil;
+import creators.ObjectCreator;
+import application.ConsoleUtil;
+import customClasses.Person;
 
 public class ManualPersonCreator implements ObjectCreator<Person> {
 

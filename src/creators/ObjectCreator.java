@@ -1,4 +1,4 @@
-package com.aston.edu.factory;
+package creators;
 
 public interface ObjectCreator<T> {
     T createObject();

@@ -1,4 +1,4 @@
-package com.aston.edu.util;
+package application;
 
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package com.aston.edu.model;
+package customClasses;
 
 import java.io.Serializable;
 import java.util.Objects;

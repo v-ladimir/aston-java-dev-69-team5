@@ -1,7 +1,7 @@
-package com.aston.edu.factory.random;
+package fillingStrategies.random;
 
-import com.aston.edu.factory.ObjectCreator;
-import com.aston.edu.model.Person;
+import creators.ObjectCreator;
+import customClasses.Person;
 
 import java.util.Random;
 

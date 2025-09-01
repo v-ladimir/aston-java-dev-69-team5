@@ -1,8 +1,8 @@
-package com.aston.edu.factory.manual;
+package fillingStrategies.manual;
 
-import com.aston.edu.factory.ObjectCreator;
-import com.aston.edu.model.Animal;
-import com.aston.edu.util.ConsoleUtil;
+import creators.ObjectCreator;
+import application.ConsoleUtil;
+import customClasses.Animal;
 
 public class ManualAnimalCreator implements ObjectCreator<Animal> {
 
