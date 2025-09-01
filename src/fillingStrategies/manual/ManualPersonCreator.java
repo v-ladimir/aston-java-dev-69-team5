@@ -1,7 +1,6 @@
 package fillingStrategies.manual;
 
 import creators.ObjectCreator;
-import application.ConsoleUtil;
 import customClasses.Person;
 
 public class ManualPersonCreator implements ObjectCreator<Person> {
@@ -12,12 +11,11 @@ public class ManualPersonCreator implements ObjectCreator<Person> {
         int age = inputAge();
         String lastName = inputLastName();
 
-        Person createdPerson = new Person.Builder()
+        return new Person.Builder()
                 .setGender(gender)
                 .setAge(age)
                 .setLastName(lastName)
                 .build();
-        return createdPerson;
     }
 
     private Person.Gender inputGender() {
@@ -26,19 +24,16 @@ public class ManualPersonCreator implements ObjectCreator<Person> {
         ConsoleUtil.print("2. Female\n");
         ConsoleUtil.print("User input:\n");
         int numGender = ConsoleUtil.userIntInput(1, 2);
-        Person.Gender chosenGender = numGender == 1 ? Person.Gender.MALE : Person.Gender.FEMALE;
-        return chosenGender;
+        return numGender == 1 ? Person.Gender.MALE : Person.Gender.FEMALE;
     }
 
     private int inputAge() {
         ConsoleUtil.print("Input age:\n");
-        int inputAge = ConsoleUtil.userIntInput(0, 100);
-        return inputAge;
+        return ConsoleUtil.userIntInput(0, 100);
     }
 
     private String inputLastName() {
         ConsoleUtil.print("Input last name:\n");
-        String inputLastName = ConsoleUtil.userStringInput();
-        return inputLastName;
+        return ConsoleUtil.userStringInput();
     }
 }

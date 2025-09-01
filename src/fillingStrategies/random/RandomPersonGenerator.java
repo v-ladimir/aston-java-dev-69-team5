@@ -27,13 +27,11 @@ public class RandomPersonGenerator implements ObjectCreator<Person> {
         Person.Gender gender = getRandomGender();
         String lastName = getRandomLastName(gender);
 
-        Person generatedPerson = new Person.Builder()
+        return new Person.Builder()
                 .setAge(age)
                 .setGender(gender)
                 .setLastName(lastName)
                 .build();
-
-        return generatedPerson;
     }
 
     private int getRandomAge() {
@@ -42,13 +40,11 @@ public class RandomPersonGenerator implements ObjectCreator<Person> {
     }
 
     private Person.Gender getRandomGender() {
-        Person.Gender randomGenger = random.nextBoolean() ? Person.Gender.MALE : Person.Gender.FEMALE;
-        return randomGenger;
+        return random.nextBoolean() ? Person.Gender.MALE : Person.Gender.FEMALE;
     }
 
     private String getRandomLastName(Person.Gender gender) {
         int indexLastName = random.nextInt(lastNameArray.length);
-        String randomLastName = (gender == Person.Gender.MALE) ? lastNameArray[indexLastName][0] : lastNameArray[indexLastName][1];
-        return randomLastName;
+        return (gender == Person.Gender.MALE) ? lastNameArray[indexLastName][0] : lastNameArray[indexLastName][1];
     }
 }

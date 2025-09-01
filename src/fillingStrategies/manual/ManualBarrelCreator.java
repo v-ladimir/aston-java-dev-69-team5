@@ -1,7 +1,6 @@
 package fillingStrategies.manual;
 
 import creators.ObjectCreator;
-import application.ConsoleUtil;
 import customClasses.Barrel;
 
 public class ManualBarrelCreator implements ObjectCreator<Barrel> {
@@ -12,12 +11,11 @@ public class ManualBarrelCreator implements ObjectCreator<Barrel> {
         String storedMaterial = inputStoredMaterial();
         Barrel.BarrelMaterial barrelMaterial = inputBarrelMaterial();
 
-        Barrel createdBarrel = new Barrel.Builder()
+        return new Barrel.Builder()
                 .setVolume(volume)
                 .setStoredMaterial(storedMaterial)
                 .setBarrelMaterial(barrelMaterial)
                 .build();
-        return createdBarrel;
     }
 
     private double inputVolume() {
@@ -33,8 +31,7 @@ public class ManualBarrelCreator implements ObjectCreator<Barrel> {
 
     private String inputStoredMaterial() {
         ConsoleUtil.print("Input stored material:\n");
-        String inputStoredMaterial = ConsoleUtil.userStringInput();
-        return inputStoredMaterial;
+        return ConsoleUtil.userStringInput();
     }
 
     private Barrel.BarrelMaterial inputBarrelMaterial() {
@@ -45,7 +42,6 @@ public class ManualBarrelCreator implements ObjectCreator<Barrel> {
         }
         ConsoleUtil.print("User input:\n");
         int userInput = ConsoleUtil.userIntInput(1, pointsNumber);
-        Barrel.BarrelMaterial chosenMaterial = Barrel.BarrelMaterial.values()[userInput - 1];
-        return chosenMaterial;
+        return Barrel.BarrelMaterial.values()[userInput - 1];
     }
 }

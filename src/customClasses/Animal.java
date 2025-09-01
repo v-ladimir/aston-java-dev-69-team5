@@ -1,10 +1,15 @@
 package customClasses;
 
 import java.io.Serializable;
+import java.util.Comparator;
 import java.util.Objects;
 
 public class Animal implements Comparable<Animal>, Serializable {
     private static final long serialVersionUID = 1L;
+    private static final Comparator<Animal> comparator = Comparator
+            .comparing(Animal::getSpecies)
+            .thenComparing(Animal::getEyeColor)
+            .thenComparing(Animal::hasFur);
 
     private final String species;
     private final String eyeColor;
@@ -51,7 +56,7 @@ public class Animal implements Comparable<Animal>, Serializable {
             if (this.eyeColor == null) {
                 throw new IllegalStateException("Eye color not set");
             }
-            if (this.isHasFurSet == false) {
+            if (!this.isHasFurSet) {
                 throw new IllegalStateException("Presence of fur not set");
             }
         }
@@ -82,11 +87,12 @@ public class Animal implements Comparable<Animal>, Serializable {
         return hasFur;
     }
 
+    public static Comparator<Animal> getComparator() {
+        return comparator;
+    }
+
     @Override
     public int compareTo(Animal o) {
-        if (o == null) {
-            return 1;
-        }
         int compareResult = this.species.compareTo(o.species);
         if (compareResult != 0) {
             return compareResult;
@@ -105,7 +111,8 @@ public class Animal implements Comparable<Animal>, Serializable {
             return false;
         }
         Animal animal = (Animal) o;
-        return hasFur == animal.hasFur && Objects.equals(species, animal.species) && Objects.equals(eyeColor, animal.eyeColor);
+        return hasFur == animal.hasFur
+                && Objects.equals(species, animal.species) && Objects.equals(eyeColor, animal.eyeColor);
     }
 
     @Override
@@ -115,10 +122,6 @@ public class Animal implements Comparable<Animal>, Serializable {
 
     @Override
     public String toString() {
-        return "Animal{" +
-                "species='" + species + '\'' +
-                ", eyeColor='" + eyeColor + '\'' +
-                ", hasFur=" + hasFur +
-                '}';
+        return this.species + ", eye color " + this.eyeColor + ", has fur" + this.hasFur;
     }
 }

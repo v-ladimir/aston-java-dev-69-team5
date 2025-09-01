@@ -1,4 +1,4 @@
-package application;
+package fillingStrategies.manual;
 
 import java.util.Scanner;
 

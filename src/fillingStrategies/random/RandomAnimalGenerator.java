@@ -2,7 +2,6 @@ package fillingStrategies.random;
 
 import creators.ObjectCreator;
 import customClasses.Animal;
-
 import java.util.Random;
 
 public class RandomAnimalGenerator implements ObjectCreator<Animal> {
@@ -17,13 +16,11 @@ public class RandomAnimalGenerator implements ObjectCreator<Animal> {
         String eyeColor = getRandomEyeColor();
         boolean hasFur = getRandomHasFur();
 
-        Animal generatedAnimal = new Animal.Builder()
+        return new Animal.Builder()
                 .setSpecies(species)
                 .setEyeColor(eyeColor)
                 .setHasFur(hasFur)
                 .build();
-
-        return generatedAnimal;
     }
 
     private String getRandomSpecies() {

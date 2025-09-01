@@ -1,10 +1,15 @@
 package customClasses;
 
 import java.io.Serializable;
+import java.util.Comparator;
 import java.util.Objects;
 
 public class Barrel implements Comparable<Barrel>, Serializable {
     private static final long serialVersionUID = 1L;
+    private static final Comparator<Barrel> comparator = Comparator
+            .comparing(Barrel::getVolume)
+            .thenComparing(Barrel::getStoredMaterial)
+            .thenComparing(Barrel::getBarrelMaterial);
 
     private final double volume;
     private final String storedMaterial;
@@ -89,6 +94,10 @@ public class Barrel implements Comparable<Barrel>, Serializable {
         return barrelMaterial;
     }
 
+    public static Comparator<Barrel> getComparator() {
+        return comparator;
+    }
+
     @Override
     public int compareTo(Barrel o) {
         if (o == null) {
@@ -112,7 +121,8 @@ public class Barrel implements Comparable<Barrel>, Serializable {
             return false;
         }
         Barrel barrel = (Barrel) o;
-        return Double.compare(volume, barrel.volume) == 0 && Objects.equals(storedMaterial, barrel.storedMaterial) && barrelMaterial == barrel.barrelMaterial;
+        return Double.compare(volume, barrel.volume) == 0
+                && Objects.equals(storedMaterial, barrel.storedMaterial) && barrelMaterial == barrel.barrelMaterial;
     }
 
     @Override
@@ -122,10 +132,6 @@ public class Barrel implements Comparable<Barrel>, Serializable {
 
     @Override
     public String toString() {
-        return "Barrel{" +
-                "volume=" + volume +
-                ", storedMaterial='" + storedMaterial + '\'' +
-                ", barrelMaterial=" + barrelMaterial +
-                '}';
+        return "volume " + volume + ", storedMaterial " + storedMaterial + ", barrelMaterial " + barrelMaterial;
     }
 }

@@ -1,10 +1,15 @@
 package customClasses;
 
 import java.io.Serializable;
+import java.util.Comparator;
 import java.util.Objects;
 
 public class Person implements Comparable<Person>, Serializable {
     private static final long serialVersionUID = 1L;
+    private static final Comparator<Person> comparator = Comparator
+            .comparing(Person::getLastName)
+            .thenComparing(Person::getAge)
+            .thenComparing(Person::getGender);
 
     private final Gender gender;
     private final int age;
@@ -88,6 +93,10 @@ public class Person implements Comparable<Person>, Serializable {
         return lastName;
     }
 
+    public Comparator<Person> getComparator() {
+        return comparator;
+    }
+
     @Override
     public int compareTo(Person o) {
         if (o == null) {
@@ -121,10 +130,6 @@ public class Person implements Comparable<Person>, Serializable {
 
     @Override
     public String toString() {
-        return "Person{" +
-                "gender=" + gender +
-                ", age=" + age +
-                ", lastName='" + lastName + '\'' +
-                '}';
+        return lastName + ",age " + age + ", gender" + gender;
     }
 }
