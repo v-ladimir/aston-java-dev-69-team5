@@ -1,6 +1,6 @@
-package com.aston.edu.util.comparators;
+package sort.comparators;
 
-import com.aston.edu.model.Barrel;
+import customClasses.Barrel;
 
 import java.util.Comparator;
 

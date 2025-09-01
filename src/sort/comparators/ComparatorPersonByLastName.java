@@ -1,6 +1,6 @@
-package com.aston.edu.util.comparators;
+package sort.comparators;
 
-import com.aston.edu.model.Person;
+import customClasses.Person;
 
 import java.util.Comparator;
 
