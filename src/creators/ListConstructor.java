@@ -2,6 +2,9 @@ package creators;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class ListConstructor<T> {
     private ObjectCreatorProvider<T> objectCreator;
@@ -29,10 +32,9 @@ public class ListConstructor<T> {
             throw new IllegalArgumentException("Size must be > 0");
         }
 
-        List<T> list = new ArrayList<>();
-        for (int i = 0; i < size; i++) {
-            list.add(objectCreator.createObject());
-        }
-        return list;
+        return Stream
+                .generate(() -> objectCreator.createObject())
+                .limit(size)
+                .collect(Collectors.toList());
     }
 }

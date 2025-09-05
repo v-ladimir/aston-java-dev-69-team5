@@ -87,6 +87,10 @@ public class Animal implements Comparable<Animal>, Serializable {
         return hasFur;
     }
 
+    public String displayHasFur() {
+        return hasFur ? "Да" : "Нет";
+    }
+
     public static Comparator<Animal> getComparator() {
         return comparator;
     }
@@ -122,6 +126,6 @@ public class Animal implements Comparable<Animal>, Serializable {
 
     @Override
     public String toString() {
-        return "Вид животного - " + this.species + ", цвет глаз - " + this.eyeColor + ", наличие шерсти - " + this.hasFur;
+        return "Вид животного - " + this.species + ", цвет глаз - " + this.eyeColor + ", наличие шерсти - " + this.displayHasFur();
     }
 }
