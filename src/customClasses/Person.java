@@ -16,7 +16,27 @@ public class Person implements Comparable<Person>, Serializable {
     private final String lastName;
 
     public enum Gender {
-        MALE, FEMALE;
+        MALE("Мужской"),
+        FEMALE("Женский");
+
+        private final String displayName;
+
+        Gender(String displayName) {
+            this.displayName = displayName;
+        }
+
+        public String getDisplayName() {
+            return displayName;
+        }
+
+        public static Gender fromDisplayName(String displayName) {
+            for (Gender gender : Gender.values()) {
+                if (gender.displayName.equalsIgnoreCase(displayName)) {
+                    return gender;
+                }
+            }
+            throw new IllegalArgumentException("Unknown gender");
+        }
     }
 
     private Person(Builder builder) {
@@ -130,6 +150,6 @@ public class Person implements Comparable<Person>, Serializable {
 
     @Override
     public String toString() {
-        return "last name - " + lastName + ", age - " + age + ", gender - " + gender;
+        return "Фамилия - " + lastName + ", возраст - " + age + ", пол - " + gender.displayName;
     }
 }

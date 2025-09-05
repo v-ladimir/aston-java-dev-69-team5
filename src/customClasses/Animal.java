@@ -122,6 +122,6 @@ public class Animal implements Comparable<Animal>, Serializable {
 
     @Override
     public String toString() {
-        return "species - " + this.species + ", eye color - " + this.eyeColor + ", has fur - " + this.hasFur;
+        return "Вид животного - " + this.species + ", цвет глаз - " + this.eyeColor + ", наличие шерсти - " + this.hasFur;
     }
 }

@@ -16,7 +16,28 @@ public class Barrel implements Comparable<Barrel>, Serializable {
     private final BarrelMaterial barrelMaterial;
 
     public enum BarrelMaterial {
-        WOOD, STEEL, PLASTIC;
+        WOOD("Дерево"),
+        STEEL("Сталь"),
+        PLASTIC("Пластик");
+
+        private final String displayName;
+
+        BarrelMaterial(String displayName) {
+            this.displayName = displayName;
+        }
+
+        public String getDisplayName() {
+            return displayName;
+        }
+
+        public static BarrelMaterial fromDisplayName(String displayName) {
+            for (BarrelMaterial material : BarrelMaterial.values()) {
+                if (material.displayName.equalsIgnoreCase(displayName)) {
+                    return material;
+                }
+            }
+            throw new IllegalArgumentException("Unknown barrel material");
+        }
     }
 
     private Barrel(Builder builder) {
@@ -132,6 +153,6 @@ public class Barrel implements Comparable<Barrel>, Serializable {
 
     @Override
     public String toString() {
-        return "volume - " + volume + ", storedMaterial - " + storedMaterial + ", barrelMaterial - " + barrelMaterial;
+        return "Объем бочки - " + volume + ", тип содержимого - " + storedMaterial + ", материал бочки - " + barrelMaterial.displayName;
     }
 }
