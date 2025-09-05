@@ -1,0 +1,42 @@
+package fillingStrategies.file.creators;
+
+import creators.ObjectCreatorStrategies;
+import customClasses.Person;
+import fillingStrategies.ObjectCreator;
+import fillingStrategies.file.ObjectFileReader;
+import fillingStrategies.file.parsers.PersonParser;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
+
+public class FilePersonCreator implements ObjectCreatorStrategies<Person> {
+    private Path path;
+    private ObjectFileReader fileReader;
+    private List<Person> listObjectsFromFile = new ArrayList<>();
+
+    public FilePersonCreator(Path path) {
+        this.path = path;
+        this.fileReader = new ObjectFileReader(path, new PersonParser());
+        initList();
+    }
+
+    public FilePersonCreator() {
+        this.path = Path.of("src/resources/data.txt");
+        this.fileReader = new ObjectFileReader(path, new PersonParser());
+        initList();
+    }
+
+    @Override
+    public Person createObject() {
+        if (listObjectsFromFile.size()==0) {
+            throw new RuntimeException("list objects is empty");
+        }
+        Person person = listObjectsFromFile.get(0);
+        listObjectsFromFile.remove(0);
+        return person;
+    }
+
+    private void initList() {
+        listObjectsFromFile = fileReader.read();
+    }
+}
