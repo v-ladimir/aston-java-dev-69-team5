@@ -19,20 +19,20 @@ public class ManualAnimalCreator implements ObjectCreator<Animal> {
     }
 
     private String inputSpecies() {
-        ConsoleUtil.print("Input species:\n");
+        ConsoleUtil.print("Введите вид животного:\n");
         return ConsoleUtil.userStringInput();
     }
 
     private String inputEyeColor() {
-        ConsoleUtil.print("Input eye color:\n");
+        ConsoleUtil.print("Введите цвет глаз:\n");
         return ConsoleUtil.userStringInput();
     }
 
     private boolean inputHasFur() {
-        ConsoleUtil.print("Select whether the animal has fur:\n");
-        ConsoleUtil.print("1. Has fur\n");
-        ConsoleUtil.print("2. Hasn't fur\n");
-        ConsoleUtil.print("User input:\n");
+        ConsoleUtil.print("Выберите имеет ли животное шерсть:\n");
+        ConsoleUtil.print("1. Имеет\n");
+        ConsoleUtil.print("2. Не имеет\n");
+        ConsoleUtil.print("Выбор пользователя:\n");
         int userInput = ConsoleUtil.userIntInput(1, 2);
         return userInput == 1;
     }

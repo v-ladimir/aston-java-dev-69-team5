@@ -19,28 +19,28 @@ public class ManualBarrelCreator implements ObjectCreator<Barrel> {
     }
 
     private double inputVolume() {
-        ConsoleUtil.print("Input volume:\n");
+        ConsoleUtil.print("Введите объем:\n");
         double inputVolume;
         try {
             inputVolume = Double.parseDouble(ConsoleUtil.userStringInput());
         } catch (NumberFormatException e) {
-            throw new RuntimeException("Incorrect input. Double must be input");
+            throw new RuntimeException("Некорректный ввод. Необходимо ввести целое или дробное число");
         }
         return inputVolume;
     }
 
     private String inputStoredMaterial() {
-        ConsoleUtil.print("Input stored material:\n");
+        ConsoleUtil.print("Введите тип содержимого бочки:\n");
         return ConsoleUtil.userStringInput();
     }
 
     private Barrel.BarrelMaterial inputBarrelMaterial() {
-        ConsoleUtil.print("Choose barrel material:\n");
+        ConsoleUtil.print("Выберите материал из которого изготовлена бочка:\n");
         int pointsNumber = Barrel.BarrelMaterial.values().length;
         for (int i = 0; i < pointsNumber; i++) {
             ConsoleUtil.print("%d. %s\n".formatted(i + 1, Barrel.BarrelMaterial.values()[i]));
         }
-        ConsoleUtil.print("User input:\n");
+        ConsoleUtil.print("Ввод пользователя:\n");
         int userInput = ConsoleUtil.userIntInput(1, pointsNumber);
         return Barrel.BarrelMaterial.values()[userInput - 1];
     }

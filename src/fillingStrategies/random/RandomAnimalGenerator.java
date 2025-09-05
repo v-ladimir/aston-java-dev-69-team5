@@ -6,9 +6,9 @@ import java.util.Random;
 
 public class RandomAnimalGenerator implements ObjectCreator<Animal> {
     private final Random random = new Random();
-    private String[] speciesArray = {"Cat", "Dog", "Lion", "Tiger", "Elephant", "Monkey",
-            "Giraffe", "Zebra", "Bear", "Wolf", "Fox", "Deer", "Rabbit", "Horse", "Kangaroo"};
-    private String[] eyeColorArray = {"Blue", "Brown", "Green", "Gray", "Amber", "Red", "Black"};
+    private String[] speciesArray = {"Кошка", "Собака", "Лев", "Тигр", "Слон", "Обезьяна",
+            "Жираф", "Зебра", "Медведь", "Волк", "Лиса", "Олень", "Кролик", "Лошадь", "Кенгуру"};
+    private String[] eyeColorArray = {"Голубой", "Коричневый", "Зеленый", "Серый", "Янтарный", "Красный", "Черный"};
 
     @Override
     public Animal createObject() {

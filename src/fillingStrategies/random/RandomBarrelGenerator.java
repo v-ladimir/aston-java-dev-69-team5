@@ -7,7 +7,7 @@ import java.util.Random;
 public class RandomBarrelGenerator implements ObjectCreator<Barrel> {
     private final Random random = new Random();
     private String[] storedMaterialArray =
-            {"Water", "Wine", "Oil", "Honey", "Beer", "Pickles", "Grain", "Salt", "Fish", "Apples", "Whiskey"};
+            {"Вода", "Вино", "Бензин", "Мед", "Пиво", "Зерно", "Соль", "Рыба", "Яблоки", "Виски"};
 
     @Override
     public Barrel createObject() {

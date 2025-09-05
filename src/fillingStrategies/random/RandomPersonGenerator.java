@@ -8,17 +8,17 @@ import java.util.Random;
 public class RandomPersonGenerator implements ObjectCreator<Person> {
     private final Random random = new Random();
     private String[][] lastNameArray = {
-            {"Ivanov", "Ivanova"},
-            {"Petrov", "Petrova"},
-            {"Sidorov", "Sidorova"},
-            {"Onopko", "Onopko"},
-            {"Grusha", "Grusha"},
-            {"Golub", "Golub"},
-            {"Markov", "Markova"},
-            {"Nalegach", "Nalegach"},
-            {"Ostapov", "Ostapova"},
-            {"Saddulaev", "Saddulaeva"},
-            {"Gribov", "Gribova"}
+            {"Иванов", "Иванова"},
+            {"Петров", "Петрова"},
+            {"Сидоров", "Сидорова"},
+            {"Онопко", "Онопко"},
+            {"Груша", "Груша"},
+            {"Голуб", "Голуб"},
+            {"Марков", "Маркова"},
+            {"Налегач", "Налегач"},
+            {"Остапов", "Остапова"},
+            {"Саддулаев", "Саддулаева"},
+            {"Грибов", "Грибова"}
     };
 
     @Override

@@ -130,6 +130,6 @@ public class Person implements Comparable<Person>, Serializable {
 
     @Override
     public String toString() {
-        return "last name - " + lastName + ", age - " + age + ", gender - " + gender;
+        return "Фамилия - " + lastName + ", возраст - " + age + ", пол - " + gender;
     }
 }

@@ -132,6 +132,6 @@ public class Barrel implements Comparable<Barrel>, Serializable {
 
     @Override
     public String toString() {
-        return "volume - " + volume + ", storedMaterial - " + storedMaterial + ", barrelMaterial - " + barrelMaterial;
+        return "Объем бочки - " + volume + ", тип содержимого - " + storedMaterial + ", материал бочки - " + barrelMaterial;
     }
 }
