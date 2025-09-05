@@ -5,8 +5,9 @@ import search.BinarySearch;
 
 import java.util.List;
 
-public class TestBinarySearch {
-    public static void main(String[] args) {
+public class TestBinarySearch implements Testing{
+    @Override
+    public boolean testFunction() {
         Animal animal1 = new Animal.Builder()
                 .setEyeColor("1")
                 .setSpecies("red")
@@ -43,6 +44,12 @@ public class TestBinarySearch {
                 .setHasFur(true)
                 .setHasFur(false)
                 .build();
-        System.out.println(BinarySearch.binarySearch(List.of(animal1, animal2, animal3, animal4, animal5, animal6), animal6));
+        List<Comparable<Animal>> list = List.of(animal1, animal2, animal3, animal4, animal5, animal6);
+        System.out.println(list.indexOf(animal6) + " = " + BinarySearch.binarySearch(list, animal6));
+
+        if (list.indexOf(animal6) == BinarySearch.binarySearch(list, animal6)) {
+            return true;
+        }
+        return false;
     }
 }
