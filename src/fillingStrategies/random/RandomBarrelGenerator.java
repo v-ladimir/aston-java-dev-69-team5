@@ -1,10 +1,10 @@
 package fillingStrategies.random;
 
-import creators.ObjectCreator;
+import creators.ObjectCreatorStrategies;
 import customClasses.Barrel;
 import java.util.Random;
 
-public class RandomBarrelGenerator implements ObjectCreator<Barrel> {
+public class RandomBarrelGenerator implements ObjectCreatorStrategies<Barrel> {
     private final Random random = new Random();
     private String[] storedMaterialArray =
             {"Вода", "Вино", "Бензин", "Мед", "Пиво", "Зерно", "Соль", "Рыба", "Яблоки", "Виски"};

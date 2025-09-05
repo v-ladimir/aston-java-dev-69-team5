@@ -1,10 +1,10 @@
 package fillingStrategies.random;
 
-import creators.ObjectCreator;
+import creators.ObjectCreatorStrategies;
 import customClasses.Animal;
 import java.util.Random;
 
-public class RandomAnimalGenerator implements ObjectCreator<Animal> {
+public class RandomAnimalGenerator implements ObjectCreatorStrategies<Animal> {
     private final Random random = new Random();
     private String[] speciesArray = {"Кошка", "Собака", "Лев", "Тигр", "Слон", "Обезьяна",
             "Жираф", "Зебра", "Медведь", "Волк", "Лиса", "Олень", "Кролик", "Лошадь", "Кенгуру"};

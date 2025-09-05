@@ -1,9 +1,9 @@
 package fillingStrategies.manual;
 
-import creators.ObjectCreator;
+import creators.ObjectCreatorStrategies;
 import customClasses.Person;
 
-public class ManualPersonCreator implements ObjectCreator<Person> {
+public class ManualPersonCreator implements ObjectCreatorStrategies<Person> {
 
     @Override
     public Person createObject() {

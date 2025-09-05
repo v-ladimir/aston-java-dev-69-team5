@@ -1,7 +1,6 @@
 package application;
 
 import application.services.*;
-
 import java.util.Scanner;
 
 public class Menu {

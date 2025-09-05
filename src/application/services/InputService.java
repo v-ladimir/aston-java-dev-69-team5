@@ -2,19 +2,9 @@ package application.services;
 
 import creators.ListConstructor;
 import creators.ObjectCreatorProvider;
-import customClasses.Animal;
-import customClasses.Barrel;
-import customClasses.Person;
+import fillingStrategies.ObjectCreator;
 import fillingStrategies.file.ObjectFileReader;
-import fillingStrategies.file.parsers.AnimalParser;
-import fillingStrategies.file.parsers.BarrelParser;
-import fillingStrategies.file.parsers.PersonParser;
-import fillingStrategies.manual.ManualAnimalCreator;
-import fillingStrategies.manual.ManualBarrelCreator;
-import fillingStrategies.manual.ManualPersonCreator;
-import fillingStrategies.random.RandomAnimalGenerator;
-import fillingStrategies.random.RandomBarrelGenerator;
-import fillingStrategies.random.RandomPersonGenerator;
+import fillingStrategies.file.parsers.*;
 
 import java.util.Scanner;
 
@@ -22,6 +12,7 @@ import java.util.Scanner;
 public class InputService {
     private final CollectionService collectionService;
     private final Scanner scanner;
+    private final ObjectCreator objectCreator = new ObjectCreator();
 
     public InputService(CollectionService collectionService, Scanner scanner) {
         this.collectionService = collectionService;
@@ -29,25 +20,15 @@ public class InputService {
     }
 
     public void manualInput() {
+        StackTraceElement[] elements = Thread.currentThread().getStackTrace();
         System.out.print("Введите количество элементов, которые будут занесены вручную: ");
         int count = readIntInput(1, 1000);
 
         collectionService.clearCollection();
 
-        switch (collectionService.getCollectionType()) {
-            case "Животное" ->
-                    collectionService.setCollection(
-                            new ListConstructor<>(new ObjectCreatorProvider(new ManualAnimalCreator())).getList(count)
-                    );
-            case "Бочка" ->
-                    collectionService.setCollection(
-                            new ListConstructor<>(new ObjectCreatorProvider(new ManualBarrelCreator())).getList(count)
-                    );
-            case "Человек" ->
-                    collectionService.setCollection(
-                            new ListConstructor<>(new ObjectCreatorProvider(new ManualPersonCreator())).getList(count)
-                    );
-        }
+        collectionService.setCollection(new ListConstructor<>(new ObjectCreatorProvider(objectCreator.getCreators()
+                .get(collectionService.getCollectionType() + ", " + elements[1].getMethodName()))).getList(count));
+
         System.out.println("Сгенерировано элементов: " + collectionService.getSize());
     }
 
@@ -89,25 +70,17 @@ public class InputService {
     }
 
     public void randomInput() {
+        StackTraceElement[] elements = Thread.currentThread().getStackTrace();
+
         System.out.print("Сколько элементов сгенерировать? ");
+
         int count = readIntInput(1, 1000);
 
         collectionService.clearCollection();
 
-        switch (collectionService.getCollectionType()) {
-            case "Животное" ->
-                    collectionService.setCollection(
-                            new ListConstructor<>(new ObjectCreatorProvider(new RandomAnimalGenerator())).getList(count)
-                    );
-            case "Бочка" ->
-                    collectionService.setCollection(
-                            new ListConstructor<>(new ObjectCreatorProvider(new RandomBarrelGenerator())).getList(count)
-                    );
-            case "Человек" ->
-                    collectionService.setCollection(
-                            new ListConstructor<>(new ObjectCreatorProvider(new RandomPersonGenerator())).getList(count)
-                    );
-        }
+        collectionService.setCollection(new ListConstructor<>(new ObjectCreatorProvider(objectCreator.getCreators()
+                .get(collectionService.getCollectionType() + ", " + elements[1].getMethodName()))).getList(count));
+
         System.out.println("Сгенерировано элементов: " + collectionService.getSize());
     }
 

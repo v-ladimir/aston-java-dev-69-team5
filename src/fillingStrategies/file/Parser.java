@@ -1,5 +1,5 @@
 package fillingStrategies.file;
 
 public interface Parser<T> {
-    public T getObjectFromString(String string);
+    T getObjectFromString(String string);
 }

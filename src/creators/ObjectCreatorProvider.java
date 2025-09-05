@@ -1,13 +1,13 @@
 package creators;
 
 public class ObjectCreatorProvider<T> {
-    private ObjectCreator<T> objectCreator;
+    private ObjectCreatorStrategies<T> objectCreator;
 
-    public ObjectCreatorProvider(ObjectCreator<T> objectCreator) {
+    public ObjectCreatorProvider(ObjectCreatorStrategies<T> objectCreator) {
         this.objectCreator = objectCreator;
     }
 
-    public void setObjectCreator(ObjectCreator<T> objectCreator) {
+    public void setObjectCreator(ObjectCreatorStrategies<T> objectCreator) {
         this.objectCreator = objectCreator;
     }
 
