@@ -18,6 +18,11 @@ public class TimSort<T extends Comparable<T>> {
             return list;
         }
 
+        if (n < MIN_MERGE) {
+            insertionSort(0, n - 1);
+            return list;
+        }
+
         this.temp = new Object[n];
         int minRun = minRunLength(n);
 
