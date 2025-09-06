@@ -45,8 +45,14 @@ public class InputService {
 
         System.out.print("Введите количество элементов для создания коллекции");
         int count = ConsoleUtil.userIntInput(1, 1000);
+        List<?> list;
 
-        List<?> list = new ListConstructor<>(objectCreator).getList(count);
+        if (fillingType.equals("Random") && count > 100) {
+            list = new ListConstructor<>(objectCreator).getListMultyThread(count);
+        } else {
+            list = new ListConstructor<>(objectCreator).getListSingleThread(count);
+        }
+
         collectionService.setCollection(list);
         System.out.println("Коллекция заполнена: " + collectionService.getSize() + " элементов");
     }
