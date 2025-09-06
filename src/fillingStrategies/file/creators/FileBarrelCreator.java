@@ -1,15 +1,14 @@
 package fillingStrategies.file.creators;
 
-import creators.ObjectCreatorStrategies;
+import creators.ObjectCreator;
 import customClasses.Barrel;
 import fillingStrategies.file.ObjectFileReader;
 import fillingStrategies.file.parsers.BarrelParser;
-
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FileBarrelCreator implements ObjectCreatorStrategies<Barrel> {
+public class FileBarrelCreator implements ObjectCreator<Barrel> {
     private Path path;
     private ObjectFileReader fileReader;
     private List<Barrel> listObjectsFromFile = new ArrayList<>();

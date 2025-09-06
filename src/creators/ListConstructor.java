@@ -1,26 +1,24 @@
 package creators;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class ListConstructor<T> {
-    private ObjectCreatorProvider<T> objectCreator;
+    private ObjectCreator<T> objectCreator;
 
     public ListConstructor() {
     }
 
-    public ListConstructor(ObjectCreatorProvider<T> objectCreator) {
+    public ListConstructor(ObjectCreator<T> objectCreator) {
         this.objectCreator = objectCreator;
     }
 
-    public ObjectCreatorProvider<T> getObjectCreator() {
+    public ObjectCreator<T> getObjectCreator() {
         return objectCreator;
     }
 
-    public void setObjectCreator(ObjectCreatorProvider<T> objectCreator) {
+    public void setObjectCreator(ObjectCreator<T> objectCreator) {
         this.objectCreator = objectCreator;
     }
 

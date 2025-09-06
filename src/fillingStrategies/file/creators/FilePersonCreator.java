@@ -1,15 +1,14 @@
 package fillingStrategies.file.creators;
 
-import creators.ObjectCreatorStrategies;
+import creators.ObjectCreator;
 import customClasses.Person;
-import fillingStrategies.ObjectCreator;
 import fillingStrategies.file.ObjectFileReader;
 import fillingStrategies.file.parsers.PersonParser;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FilePersonCreator implements ObjectCreatorStrategies<Person> {
+public class FilePersonCreator implements ObjectCreator<Person> {
     private Path path;
     private ObjectFileReader fileReader;
     private List<Person> listObjectsFromFile = new ArrayList<>();

@@ -1,9 +1,9 @@
 package fillingStrategies.manual;
 
-import creators.ObjectCreatorStrategies;
+import creators.ObjectCreator;
 import customClasses.Animal;
 
-public class ManualAnimalCreator implements ObjectCreatorStrategies<Animal> {
+public class ManualAnimalCreator implements ObjectCreator<Animal> {
 
     @Override
     public Animal createObject() {
