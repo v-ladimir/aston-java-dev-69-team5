@@ -1,7 +1,6 @@
 package fillingStrategies.file.parsers;
 
 import customClasses.Barrel;
-import fillingStrategies.file.Parser;
 
 public class BarrelParser implements Parser<Barrel> {
     @Override

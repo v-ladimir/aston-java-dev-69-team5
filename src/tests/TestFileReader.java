@@ -1,11 +1,11 @@
 package tests;
 
-import creators.ObjectCreator;
+import fillingStrategies.ObjectCreator;
 import customClasses.Animal;
 import customClasses.Barrel;
 import customClasses.Person;
-import fillingStrategies.file.ObjectFileReader;
-import fillingStrategies.file.ObjectFileWriter;
+import fillingStrategies.file.util.ObjectFileReader;
+import fillingStrategies.file.util.ObjectFileWriter;
 import fillingStrategies.file.parsers.AnimalParser;
 import fillingStrategies.file.parsers.BarrelParser;
 import fillingStrategies.file.parsers.PersonParser;

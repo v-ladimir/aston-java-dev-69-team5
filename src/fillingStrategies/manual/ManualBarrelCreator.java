@@ -1,6 +1,6 @@
 package fillingStrategies.manual;
 
-import creators.ObjectCreator;
+import fillingStrategies.ObjectCreator;
 import customClasses.Barrel;
 
 public class ManualBarrelCreator implements ObjectCreator<Barrel> {

@@ -1,7 +1,6 @@
 package fillingStrategies.file.parsers;
 
 import customClasses.Animal;
-import fillingStrategies.file.Parser;
 
 public class AnimalParser implements Parser<Animal> {
     @Override

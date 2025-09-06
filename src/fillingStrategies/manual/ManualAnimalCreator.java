@@ -1,6 +1,6 @@
 package fillingStrategies.manual;
 
-import creators.ObjectCreator;
+import fillingStrategies.ObjectCreator;
 import customClasses.Animal;
 
 public class ManualAnimalCreator implements ObjectCreator<Animal> {

@@ -1,10 +1,10 @@
 package tests;
 
-import creators.ObjectCreator;
+import fillingStrategies.ObjectCreator;
 import customClasses.Animal;
 import customClasses.Barrel;
 import customClasses.Person;
-import fillingStrategies.file.ObjectFileWriter;
+import fillingStrategies.file.util.ObjectFileWriter;
 import fillingStrategies.random.RandomAnimalGenerator;
 import fillingStrategies.random.RandomBarrelGenerator;
 import fillingStrategies.random.RandomPersonGenerator;

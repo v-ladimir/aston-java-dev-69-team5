@@ -1,6 +1,6 @@
 package fillingStrategies.random;
 
-import creators.ObjectCreator;
+import fillingStrategies.ObjectCreator;
 import customClasses.Person;
 
 import java.util.Random;

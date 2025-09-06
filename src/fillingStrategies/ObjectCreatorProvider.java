@@ -1,4 +1,4 @@
-package creators;
+package fillingStrategies;
 
 import fillingStrategies.file.creators.FileAnimalCreator;
 import fillingStrategies.file.creators.FileBarrelCreator;

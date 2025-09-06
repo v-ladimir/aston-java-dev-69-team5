@@ -1,8 +1,8 @@
 package fillingStrategies.file.creators;
 
-import creators.ObjectCreator;
+import fillingStrategies.ObjectCreator;
 import customClasses.Animal;
-import fillingStrategies.file.ObjectFileReader;
+import fillingStrategies.file.util.ObjectFileReader;
 import fillingStrategies.file.parsers.AnimalParser;
 import java.nio.file.Path;
 import java.util.ArrayList;
