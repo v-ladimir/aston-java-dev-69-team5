@@ -3,14 +3,7 @@ package application.services;
 import customClasses.Animal;
 import customClasses.Barrel;
 import customClasses.Person;
-import fillingStrategies.manual.ManualAnimalCreator;
-import fillingStrategies.manual.ManualBarrelCreator;
-import fillingStrategies.manual.ManualPersonCreator;
-import search.BinarySearch;
 import sort.TimSort;
-
-import java.util.Comparator;
-import java.util.List;
 
 public class SortService {
     private final CollectionService collectionService;
@@ -20,36 +13,18 @@ public class SortService {
         this.collectionService = collectionService;
         this.outputService = outputService;
     }
-
+    // Метод для работы с сортировкой коллекции
     public void sortCollection() {
         if (collectionService.isEmpty()) {
             System.out.println("Коллекция пуста!");
             return;
         }
-
         TimSort timSort = new TimSort();
-
-        Comparator<Animal> animalComparator = Comparator
-                .comparing(Animal::getSpecies)
-                .thenComparing(Animal::getEyeColor)
-                .thenComparing(Animal::hasFur);
-
-        Comparator<Barrel> barrelComparator = Comparator
-                .comparing(Barrel::getVolume)
-                .thenComparing(Barrel::getStoredMaterial)
-                .thenComparing(Barrel::getBarrelMaterial);
-
-        Comparator<Person> personComparator = Comparator
-                .comparing(Person::getLastName)
-                .thenComparing(Person::getAge)
-                .thenComparing(Person::getGender);
-
         switch (collectionService.getCollectionType()) {
-            case "Животное" -> timSort.sort(collectionService.getCollection(), animalComparator);
-            case "Бочка" -> timSort.sort(collectionService.getCollection(), barrelComparator);
-            case "Человек" -> timSort.sort(collectionService.getCollection(), personComparator);
+            case "Животное" -> timSort.sort(collectionService.getCollection(), Animal.getComparator());
+            case "Бочка" -> timSort.sort(collectionService.getCollection(), Barrel.getComparator());
+            case "Человек" -> timSort.sort(collectionService.getCollection(), Person.getComparator());
         }
-
         System.out.println("Коллекция отсортирована");
         outputService.showCollection();
     }

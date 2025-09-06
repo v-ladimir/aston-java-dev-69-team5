@@ -13,7 +13,6 @@ public class OutputService {
             System.out.println("Коллекция пуста!");
             return;
         }
-
         System.out.println("\n=== КОЛЛЕКЦИЯ (" + collectionService.getCollectionType() + ") ===");
         for (int i = 0; i < collectionService.getSize(); i++) {
             System.out.println((i + 1) + ". " + collectionService.getCollection().get(i));

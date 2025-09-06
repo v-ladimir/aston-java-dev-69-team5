@@ -16,19 +16,17 @@ public class SearchService {
     public SearchService(CollectionService collectionService) {
         this.collectionService = collectionService;
     }
-
-    public void searchInCollection() {
+    // Метод для работы с поиском
+    public int searchInCollection() {
+        int index = -1;
         if (collectionService.isEmpty()) {
             System.out.println("Коллекция пуста!");
-            return;
+            return index;
         }
-
-        if (!isSorted(collectionService.getCollection(), collectionService.getCollectionType())) {
+        if (!collectionService.isSorted()) {
             System.out.println("Коллекция не отсортирована! Сначала отсортируйте её.");
-            return;
+            return index;
         }
-
-        int index = -1;
         System.out.print("Введите данные объекта для поиска: ");
 
         switch (collectionService.getCollectionType()) {
@@ -52,57 +50,11 @@ public class SearchService {
         System.out.println("\n=== РЕЗУЛЬТАТЫ ПОИСКА ===");
         if (index >= 0) {
             System.out.println("Поиск завершен. Найденное значение находится под индексом " + index);
+            collectionService.setSearchIndex(index);
             System.out.println(collectionService.getCollection().get(index));
         } else {
             System.out.println("Ничего не найдено");
         }
-    }
-
-    private boolean isSorted(List<?> collection, String collectionType) {
-        if (collection == null || collection.size() <= 1) {
-            return true;
-        }
-
-        switch (collectionType) {
-            case "Животное" -> {
-                return isSortedAnimal((List<Animal>) collection);
-            }
-            case "Бочка" -> {
-                return isSortedBarrel((List<Barrel>) collection);
-            }
-            case "Человек" -> {
-                return isSortedPerson((List<Person>) collection);
-            }
-            default -> {
-                return false;
-            }
-        }
-    }
-
-    private boolean isSortedAnimal(List<Animal> list) {
-        for (int i = 0; i < list.size() - 1; i++) {
-            if (list.get(i).compareTo(list.get(i + 1)) > 0) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    private boolean isSortedBarrel(List<Barrel> list) {
-        for (int i = 0; i < list.size() - 1; i++) {
-            if (list.get(i).compareTo(list.get(i + 1)) > 0) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    private boolean isSortedPerson(List<Person> list) {
-        for (int i = 0; i < list.size() - 1; i++) {
-            if (list.get(i).compareTo(list.get(i + 1)) > 0) {
-                return false;
-            }
-        }
-        return true;
+        return index;
     }
 }
