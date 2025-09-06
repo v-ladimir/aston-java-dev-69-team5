@@ -5,38 +5,34 @@ import creators.ObjectCreatorProvider;
 import fillingStrategies.ObjectCreator;
 import fillingStrategies.file.ObjectFileReader;
 import fillingStrategies.file.parsers.*;
+import fillingStrategies.manual.ConsoleUtil;
 
 import java.util.Scanner;
 
 // Сервис для работы с вводом данных
 public class InputService {
     private final CollectionService collectionService;
-    private final Scanner scanner;
     private final ObjectCreator objectCreator = new ObjectCreator();
 
     public InputService(CollectionService collectionService, Scanner scanner) {
         this.collectionService = collectionService;
-        this.scanner = scanner;
     }
 
+    // Метод по ручному заполнению коллекции
     public void manualInput() {
         StackTraceElement[] elements = Thread.currentThread().getStackTrace();
         System.out.print("Введите количество элементов, которые будут занесены вручную: ");
-        int count = readIntInput(1, 1000);
-
+        int count = ConsoleUtil.userIntInput(1, 100);
         collectionService.clearCollection();
-
         collectionService.setCollection(new ListConstructor<>(new ObjectCreatorProvider(objectCreator.getCreators()
                 .get(collectionService.getCollectionType() + ", " + elements[1].getMethodName()))).getList(count));
-
         System.out.println("Сгенерировано элементов: " + collectionService.getSize());
     }
 
+    // метод для заполнения коллекции из файла
     public void fileInput() {
         System.out.println("Вызов метода наполнения коллекции из файла");
-        // Реализация чтения из файла
         collectionService.clearCollection();
-
         switch (collectionService.getCollectionType()) {
             case "Животное" -> {
                 try {
@@ -69,32 +65,15 @@ public class InputService {
         System.out.println("Сгенерировано элементов: " + collectionService.getSize());
     }
 
+    // Метод по рандомному заполнению коллекции
     public void randomInput() {
         StackTraceElement[] elements = Thread.currentThread().getStackTrace();
-
         System.out.print("Сколько элементов сгенерировать? ");
-
-        int count = readIntInput(1, 1000);
-
+        int count = ConsoleUtil.userIntInput(1, 1000);
         collectionService.clearCollection();
-
         collectionService.setCollection(new ListConstructor<>(new ObjectCreatorProvider(objectCreator.getCreators()
                 .get(collectionService.getCollectionType() + ", " + elements[1].getMethodName()))).getList(count));
 
         System.out.println("Сгенерировано элементов: " + collectionService.getSize());
-    }
-
-    private int readIntInput(int min, int max) {
-        while (true) {
-            try {
-                int input = Integer.parseInt(scanner.nextLine());
-                if (input >= min && input <= max) {
-                    return input;
-                }
-                System.out.print("Введите число от " + min + " до " + max + ": ");
-            } catch (NumberFormatException e) {
-                System.out.print("Ошибка! Введите целое число: ");
-            }
-        }
     }
 }
