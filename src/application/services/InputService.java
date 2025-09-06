@@ -42,7 +42,7 @@ public class InputService {
 
         collectionService.clearCollection();
 
-        System.out.print("Введите количество элементов для создания коллекции");
+        System.out.print("Введите количество элементов для создания коллекции: ");
         int count = ConsoleUtil.userIntInput(1, 1000);
         List<?> list;
 
