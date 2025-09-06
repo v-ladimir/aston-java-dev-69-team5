@@ -60,15 +60,19 @@ public class SubMenuService {
         System.out.print("Выберите способ: ");
 
         int choice = ConsoleUtil.userIntInput(0, 3);
-
+        String fillingType;
         switch (choice) {
-            case 1 -> inputService.manualInput();
-            case 2 -> inputService.fileInput();
-            case 3 -> inputService.randomInput();
+            case 1 -> fillingType = "Manual";
+            case 2 -> fillingType = "File";
+            case 3 -> fillingType = "Random";
             case 0 -> {
                 return;
             }
-        }
+            default -> throw new IllegalStateException("Неверный выбор: " + choice);
+        };
+        inputService.setFillingType(fillingType);
+
+        inputService.initCollection();
     }
 
     // Подменю для записи отсортированной коллекции или найденного бинарным поиском значения

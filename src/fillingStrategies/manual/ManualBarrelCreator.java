@@ -1,9 +1,9 @@
 package fillingStrategies.manual;
 
-import creators.ObjectCreatorStrategies;
+import fillingStrategies.ObjectCreator;
 import customClasses.Barrel;
 
-public class ManualBarrelCreator implements ObjectCreatorStrategies<Barrel> {
+public class ManualBarrelCreator implements ObjectCreator<Barrel> {
 
     @Override
     public Barrel createObject() {

@@ -1,10 +1,10 @@
 package tests;
 
-import creators.ObjectCreatorProvider;
+import fillingStrategies.ObjectCreator;
 import customClasses.Animal;
 import customClasses.Barrel;
 import customClasses.Person;
-import fillingStrategies.file.ObjectFileWriter;
+import fillingStrategies.file.util.ObjectFileWriter;
 import fillingStrategies.random.RandomAnimalGenerator;
 import fillingStrategies.random.RandomBarrelGenerator;
 import fillingStrategies.random.RandomPersonGenerator;
@@ -26,9 +26,9 @@ public class TestFileWriter implements Testing {
             throw new RuntimeException(e);
         }
 
-        ObjectCreatorProvider<Person> personCreator = new ObjectCreatorProvider<>(new RandomPersonGenerator());
-        ObjectCreatorProvider<Barrel> barrelCreator = new ObjectCreatorProvider<>(new RandomBarrelGenerator());
-        ObjectCreatorProvider<Animal> animalCreator = new ObjectCreatorProvider<>(new RandomAnimalGenerator());
+        ObjectCreator<Person> personCreator = new RandomPersonGenerator();
+        ObjectCreator<Barrel> barrelCreator = new RandomBarrelGenerator();
+        ObjectCreator<Animal> animalCreator = new RandomAnimalGenerator();
 
         ObjectFileWriter testWriter = new ObjectFileWriter(Path.of("src/tests/testCreateAndWrite.txt"));
         testWriter.write(personCreator.createObject());

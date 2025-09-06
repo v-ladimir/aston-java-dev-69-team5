@@ -1,7 +1,6 @@
 package fillingStrategies.file.parsers;
 
 import customClasses.Person;
-import fillingStrategies.file.Parser;
 
 public class PersonParser implements Parser<Person> {
     @Override

@@ -1,4 +1,6 @@
-package fillingStrategies.file;
+package fillingStrategies.file.util;
+
+import fillingStrategies.file.parsers.Parser;
 
 import java.io.IOException;
 import java.nio.file.Files;
