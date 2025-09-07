@@ -1,11 +1,11 @@
 package tests;
 
-import creators.ObjectCreatorProvider;
+import fillingStrategies.ObjectCreator;
 import customClasses.Animal;
 import customClasses.Barrel;
 import customClasses.Person;
-import fillingStrategies.file.ObjectFileReader;
-import fillingStrategies.file.ObjectFileWriter;
+import fillingStrategies.file.util.ObjectFileReader;
+import fillingStrategies.file.util.ObjectFileWriter;
 import fillingStrategies.file.parsers.AnimalParser;
 import fillingStrategies.file.parsers.BarrelParser;
 import fillingStrategies.file.parsers.PersonParser;
@@ -29,9 +29,9 @@ public class TestFileReader implements Testing {
             throw new RuntimeException(e);
         }
 
-        ObjectCreatorProvider<Person> personCreator = new ObjectCreatorProvider<>(new RandomPersonGenerator());
-        ObjectCreatorProvider<Barrel> barrelCreator = new ObjectCreatorProvider<>(new RandomBarrelGenerator());
-        ObjectCreatorProvider<Animal> animalCreator = new ObjectCreatorProvider<>(new RandomAnimalGenerator());
+        ObjectCreator<Person> personCreator = new RandomPersonGenerator();
+        ObjectCreator<Barrel> barrelCreator = new RandomBarrelGenerator();
+        ObjectCreator<Animal> animalCreator = new RandomAnimalGenerator();
 
         ObjectFileWriter testWriter = new ObjectFileWriter(Path.of("src/tests/testRead.txt"));
 

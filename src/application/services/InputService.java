@@ -1,79 +1,58 @@
 package application.services;
 
-import creators.ListConstructor;
-import creators.ObjectCreatorProvider;
+import fillingStrategies.ListConstructor;
+import fillingStrategies.ObjectCreatorProvider;
 import fillingStrategies.ObjectCreator;
-import fillingStrategies.file.ObjectFileReader;
-import fillingStrategies.file.parsers.*;
 import fillingStrategies.manual.ConsoleUtil;
 
+import java.util.List;
 import java.util.Scanner;
 
 // Сервис для работы с вводом данных
 public class InputService {
     private final CollectionService collectionService;
-    private final ObjectCreator objectCreator = new ObjectCreator();
+    private final Scanner scanner;
+    private ObjectCreator objectCreator;
+    private String fillingType = "Не выбран";
 
     public InputService(CollectionService collectionService, Scanner scanner) {
         this.collectionService = collectionService;
+        this.scanner = scanner;
     }
 
-    // Метод по ручному заполнению коллекции
-    public void manualInput() {
-        StackTraceElement[] elements = Thread.currentThread().getStackTrace();
-        System.out.print("Введите количество элементов, которые будут занесены вручную: ");
-        int count = ConsoleUtil.userIntInput(1, 100);
-        collectionService.clearCollection();
-        collectionService.setCollection(new ListConstructor<>(new ObjectCreatorProvider(objectCreator.getCreators()
-                .get(collectionService.getCollectionType() + ", " + elements[1].getMethodName()))).getList(count));
-        System.out.println("Сгенерировано элементов: " + collectionService.getSize());
+    public String getFillingType() {
+        return fillingType;
     }
 
-    // метод для заполнения коллекции из файла
-    public void fileInput() {
-        System.out.println("Вызов метода наполнения коллекции из файла");
-        collectionService.clearCollection();
-        switch (collectionService.getCollectionType()) {
-            case "Животное" -> {
-                try {
-                    collectionService.setCollection(
-                            new ObjectFileReader<>(new AnimalParser()).read());
-                } catch (IllegalArgumentException e) {
-                    System.out.println("Ошибка при чтении файла: " + e.getMessage());
-                    System.out.println("Некорректные значения в файле для заполнения коллекции типа Животное");
-                }
-            }
-            case "Бочка" -> {
-                try {
-                    collectionService.setCollection(
-                            new ObjectFileReader<>(new BarrelParser()).read());
-                } catch (IllegalArgumentException e) {
-                    System.out.println("Ошибка при чтении файла: " + e.getMessage());
-                    System.out.println("Некорректные значения в файле для заполнения коллекции типа Бочка");
-                }
-            }
-            case "Человек" -> {
-                try {
-                    collectionService.setCollection(
-                            new ObjectFileReader<>(new PersonParser()).read());
-                } catch (IllegalArgumentException e) {
-                    System.out.println("Ошибка при чтении файла: " + e.getMessage());
-                    System.out.println("Некорректные значения в файле для заполнения коллекции типа Человек");
-                }
-            }
+    public void setFillingType(String fillingType) {
+        this.fillingType = fillingType;
+    }
+
+    private void setObjectCreator() {
+        String keyMapForChoiceCreator = collectionService.getCollectionType() + "+" + fillingType;
+        ObjectCreatorProvider creatorProvider = new ObjectCreatorProvider();
+        objectCreator = creatorProvider.getCreator(keyMapForChoiceCreator);
+    }
+
+    public void initCollection() {
+        setObjectCreator();
+        if (objectCreator == null) {
+            throw new IllegalStateException("Не удалось инициализировать объект для создания экземпляров коллекции");
         }
-        System.out.println("Сгенерировано элементов: " + collectionService.getSize());
-    }
 
-    // Метод по рандомному заполнению коллекции
-    public void randomInput() {
-        StackTraceElement[] elements = Thread.currentThread().getStackTrace();
-        System.out.print("Сколько элементов сгенерировать? ");
-        int count = ConsoleUtil.userIntInput(1, 1000);
         collectionService.clearCollection();
-        collectionService.setCollection(new ListConstructor<>(new ObjectCreatorProvider(objectCreator.getCreators()
-                .get(collectionService.getCollectionType() + ", " + elements[1].getMethodName()))).getList(count));
 
-        System.out.println("Сгенерировано элементов: " + collectionService.getSize());
+        System.out.print("Введите количество элементов для создания коллекции: ");
+        int count = ConsoleUtil.userIntInput(1, 1000);
+        List<?> list;
+
+        if (fillingType.equals("Random") && count > 100) {
+            list = new ListConstructor<>(objectCreator).getListMultyThread(count);
+        } else {
+            list = new ListConstructor<>(objectCreator).getListSingleThread(count);
+        }
+
+        collectionService.setCollection(list);
+        System.out.println("Коллекция заполнена: " + collectionService.getSize() + " элементов");
     }
 }

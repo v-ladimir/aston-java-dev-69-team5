@@ -1,6 +1,6 @@
 package application.services;
 
-import fillingStrategies.file.ObjectFileWriter;
+import fillingStrategies.file.util.ObjectFileWriter;
 
 import java.nio.file.Path;
 

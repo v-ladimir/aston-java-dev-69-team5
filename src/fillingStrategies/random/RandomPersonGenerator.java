@@ -1,11 +1,11 @@
 package fillingStrategies.random;
 
-import creators.ObjectCreatorStrategies;
+import fillingStrategies.ObjectCreator;
 import customClasses.Person;
 
 import java.util.Random;
 
-public class RandomPersonGenerator implements ObjectCreatorStrategies<Person> {
+public class RandomPersonGenerator implements ObjectCreator<Person> {
     private final Random random = new Random();
     private String[][] lastNameArray = {
             {"Иванов", "Иванова"},
