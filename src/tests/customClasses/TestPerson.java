@@ -7,7 +7,7 @@ public class TestPerson {
         Person person1 = new Person.Builder()
                 .setGender(Person.Gender.MALE)
                 .setAge(1)
-                .setLastName("Имя")
+                .setLastName("Иванов")
                 .build();
         System.out.println(person1);
 

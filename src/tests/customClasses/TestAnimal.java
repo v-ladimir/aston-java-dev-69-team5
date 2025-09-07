@@ -11,11 +11,56 @@ public class TestAnimal {
                 .build();
         System.out.println(animal1);
 
-        Animal animal2 = new Animal.Builder()
-                .setSpecies("")
-                .setHasFur(true)
-                .build();
-        System.out.println(animal2);
+        try {
+            Animal animal2 = new Animal.Builder()
+                    .setSpecies("")
+                    .setEyeColor("зелёный")
+                    .setHasFur(true)
+                    .build();
+            System.out.println(animal2);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
 
+        try {
+            Animal animal2 = new Animal.Builder()
+                    .setSpecies("кот")
+                    .setEyeColor("")
+                    .setHasFur(true)
+                    .build();
+            System.out.println(animal2);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        try {
+            Animal animal2 = new Animal.Builder()
+                    .setSpecies("кот")
+                    .setHasFur(true)
+                    .build();
+            System.out.println(animal2);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        try {
+            Animal animal2 = new Animal.Builder()
+                    .setEyeColor("зелёный")
+                    .setHasFur(true)
+                    .build();
+            System.out.println(animal2);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        try {
+            Animal animal2 = new Animal.Builder()
+                    .setSpecies("кот")
+                    .setEyeColor("зелёный")
+                    .build();
+            System.out.println(animal2);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
