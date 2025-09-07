@@ -4,8 +4,7 @@ import java.io.Serializable;
 import java.util.Comparator;
 import java.util.Objects;
 
-public class Barrel implements Comparable<Barrel>, Serializable {
-    private static final long serialVersionUID = 1L;
+public class Barrel implements Comparable<Barrel> {
     private static final Comparator<Barrel> comparator = Comparator
             .comparing(Barrel::getVolume)
             .thenComparing(Barrel::getStoredMaterial)
