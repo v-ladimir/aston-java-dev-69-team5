@@ -19,7 +19,7 @@ public class ConsoleUtil {
         int input = 0;
         while (!validInput) {
             if (!scanner.hasNextInt()) {
-                ConsoleUtil.print("Необходимо ввести число от %d до %d\n".formatted(minLimit, maxLimit));
+                ConsoleUtil.print("Input must be number between %d and %d".formatted(minLimit, maxLimit));
                 scanner.nextLine();
                 continue;
             }
@@ -28,7 +28,7 @@ public class ConsoleUtil {
             scanner.nextLine();
 
             if (input < minLimit || input > maxLimit) {
-                ConsoleUtil.print("Необходимо ввести число от %d до %d\n".formatted(minLimit, maxLimit));
+                ConsoleUtil.print("Input must be number between %d and %d".formatted(minLimit, maxLimit));
                 continue;
             }
             validInput = true;

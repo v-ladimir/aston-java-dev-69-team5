@@ -1,4 +1,4 @@
-package tests.parsers;
+package tests.fillingFromFile;
 
 import customClasses.Animal;
 import customClasses.Barrel;
@@ -10,18 +10,18 @@ import fillingStrategies.file.parsers.PersonParser;
 public class TestParsers {
     public static void main(String[] args) {
         AnimalParser animalParser = new AnimalParser();
-        String string = "Вид животного - Кот, цвет глаз - Зелёный, наличие шерсти - да";
-        Animal animal = animalParser.getObjectFromString(string);
+        Animal animal = animalParser.getObjectFromString(
+                "Вид животного - Кот, цвет глаз - Зелёный, наличие шерсти - Да");
         System.out.println(animal);
 
         BarrelParser barrelParser = new BarrelParser();
-        string = "Объем бочки - 84.1, тип содержимого - Мед, материал бочки - Сталь";
-        Barrel barrel = barrelParser.getObjectFromString(string);
+        Barrel barrel = barrelParser.getObjectFromString(
+                "Объем бочки - 84.1, тип содержимого - Мед, материал бочки - Сталь");
         System.out.println(barrel);
 
         PersonParser personParser = new PersonParser();
-        string = "Фамилия - Иванов, возраст - 15, пол - Мужской";
-        Person person = personParser.getObjectFromString(string);
+        Person person = personParser.getObjectFromString(
+                "Фамилия - Иванов, возраст - 15, пол - Мужской");
         System.out.println(person);
     }
 }
