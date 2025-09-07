@@ -80,15 +80,17 @@ public class SubMenuService {
     public void showFileWriterMenu() {
         System.out.println("\n=== ЗАПИСЬ В ФАЙЛ ===");
         System.out.println("0. Выйти в главное меню");
-        System.out.println("1. Записать в файл отсортированную коллекцию");
-        System.out.println("2. Записать в файл найденное бинарным поиском значение коллекции");
+        System.out.println("1. Очистка файла");
+        System.out.println("2. Записать в файл отсортированную коллекцию");
+        System.out.println("3. Записать в файл найденное бинарным поиском значение коллекции");
         System.out.print("Выберите пункт меню: ");
 
-        int choice = ConsoleUtil.userIntInput(0, 2);
+        int choice = ConsoleUtil.userIntInput(0, 3);
 
         switch (choice) {
-            case 1 -> fileWriterService.saveSortedCollectionToFile();
-            case 2 -> fileWriterService.saveSearchResultToFile();
+            case 1 -> fileWriterService.clearFile();
+            case 2 -> fileWriterService.saveSortedCollectionToFile();
+            case 3 -> fileWriterService.saveSearchResultToFile();
             case 0 -> {
                 return;
             }
