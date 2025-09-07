@@ -1,12 +1,14 @@
 package application.services;
 
 import fillingStrategies.file.util.ObjectFileWriter;
+import fillingStrategies.manual.ConsoleUtil;
 
 import java.nio.file.Path;
 
 // Сервис для записи отсортированной коллекции в файл и записи значения полученного бинарным поиском в файл.
 public class FileWriterService {
     private final CollectionService collectionService;
+    private String path;
 
     public FileWriterService(CollectionService collectionService) {
         this.collectionService = collectionService;
@@ -21,12 +23,12 @@ public class FileWriterService {
             System.out.println("Коллекция не отсортирована! Сначала отсортируйте её.");
             return;
         }
-        ObjectFileWriter testWriter = new ObjectFileWriter(Path.of("src/resources/testWriterFile.txt"));
+        path = chooseFilePath();
+        ObjectFileWriter testWriter = new ObjectFileWriter(Path.of(path));
         for (int i = 0; i < collectionService.getSize(); i++) {
-            System.out.println((i + 1) + ". " + collectionService.getCollection().get(i));
             testWriter.write(collectionService.getCollection().get(i));
         }
-        System.out.println("Коллекция записана в файл: src/resources/testWriterFile.txt");
+        System.out.println("Коллекция записана в файл: " + path);
     }
 
     public void saveSearchResultToFile() {
@@ -34,9 +36,22 @@ public class FileWriterService {
             System.out.println("Отсутствует значение для записи в файл");
             return;
         }
-        ObjectFileWriter testWriter = new ObjectFileWriter(Path.of("src/resources/testWriterFile.txt"));
+        path = chooseFilePath();
+        ObjectFileWriter testWriter = new ObjectFileWriter(Path.of(path));
         testWriter.write(collectionService.getCollection().get(collectionService.getSearchIndex()));
-        System.out.println("Найденное значение записано в файл: src/resources/testWriterFile.txt");
+        System.out.println("Найденное значение записано в файл: " + path);
         collectionService.searchIndexReset();
+    }
+
+    public void clearFile() {
+        path = chooseFilePath();
+        new ObjectFileWriter(Path.of(path)).clearFile();
+        System.out.println("Очищено содержимое файла: \n" + path);
+
+    }
+
+    public static String chooseFilePath() {
+        System.out.println("Введите полный путь к файлу:");
+        return ConsoleUtil.userStringInput();
     }
 }
