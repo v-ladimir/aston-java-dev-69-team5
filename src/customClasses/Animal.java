@@ -1,11 +1,9 @@
 package customClasses;
 
-import java.io.Serializable;
 import java.util.Comparator;
 import java.util.Objects;
 
-public class Animal implements Comparable<Animal>, Serializable {
-    private static final long serialVersionUID = 1L;
+public class Animal implements Comparable<Animal> {
     private static final Comparator<Animal> comparator = Comparator
             .comparing(Animal::getSpecies)
             .thenComparing(Animal::getEyeColor)
