@@ -1,5 +1,6 @@
 package fillingStrategies.file.creators;
 
+import application.services.FileWriterService;
 import fillingStrategies.ObjectCreator;
 import customClasses.Person;
 import fillingStrategies.file.util.ObjectFileReader;
@@ -20,7 +21,7 @@ public class FilePersonCreator implements ObjectCreator<Person> {
     }
 
     public FilePersonCreator() {
-        this.path = Path.of("src/resources/data.txt");
+        this.path = Path.of(FileWriterService.chooseFilePath());
         this.fileReader = new ObjectFileReader(path, new PersonParser());
         initList();
     }

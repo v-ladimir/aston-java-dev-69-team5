@@ -26,6 +26,5 @@ public class SortService {
             case "Человек" -> timSort.sort(collectionService.getCollection(), Person.getComparator());
         }
         System.out.println("Коллекция отсортирована");
-        outputService.showCollection();
     }
 }
