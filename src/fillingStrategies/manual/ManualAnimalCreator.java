@@ -20,12 +20,30 @@ public class ManualAnimalCreator implements ObjectCreator<Animal> {
 
     private String inputSpecies() {
         ConsoleUtil.print("Введите вид животного:\n");
-        return ConsoleUtil.userStringInput();
+        String input;
+        while(true) {
+            input = ConsoleUtil.userStringInput();
+            if (input.isBlank()) {
+                ConsoleUtil.print("Параметр не может быть пустым. Введите корректные данные\n");
+                continue;
+            }
+            break;
+        }
+        return input;
     }
 
     private String inputEyeColor() {
         ConsoleUtil.print("Введите цвет глаз:\n");
-        return ConsoleUtil.userStringInput();
+        String input;
+        while(true) {
+            input = ConsoleUtil.userStringInput();
+            if (input.isBlank()) {
+                ConsoleUtil.print("Параметр не может быть пустым. Введите корректные данные\n");
+                continue;
+            }
+            break;
+        }
+        return input;
     }
 
     private boolean inputHasFur() {
