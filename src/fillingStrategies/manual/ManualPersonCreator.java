@@ -34,6 +34,15 @@ public class ManualPersonCreator implements ObjectCreator<Person> {
 
     private String inputLastName() {
         ConsoleUtil.print("Введите фамилию:\n");
-        return ConsoleUtil.userStringInput();
+        String input;
+        while(true) {
+            input = ConsoleUtil.userStringInput();
+            if (input.isBlank()) {
+                ConsoleUtil.print("Параметр не может быть пустым. Введите корректные данные\n");
+                continue;
+            }
+            break;
+        }
+        return input;
     }
 }

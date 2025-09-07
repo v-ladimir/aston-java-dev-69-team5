@@ -20,18 +20,36 @@ public class ManualBarrelCreator implements ObjectCreator<Barrel> {
 
     private double inputVolume() {
         ConsoleUtil.print("Введите объем:\n");
-        double inputVolume;
-        try {
-            inputVolume = Double.parseDouble(ConsoleUtil.userStringInput());
-        } catch (NumberFormatException e) {
-            throw new RuntimeException("Некорректный ввод. Необходимо ввести целое или дробное число");
+        double inputVolume = 0;
+        int minValue = 0;
+        int maxValue = 1000;
+        while (true) {
+            try {
+                inputVolume = Double.parseDouble(ConsoleUtil.userStringInput());
+                if(inputVolume <= minValue || inputVolume > maxValue) {
+                    ConsoleUtil.print("Некорректный ввод. Объем должен быть в диапазоне %d - %d\n".formatted(minValue, maxValue));
+                    continue;
+                }
+                break;
+            } catch (NumberFormatException e) {
+                ConsoleUtil.print("Некорректный ввод. Необходимо ввести целое или дробное число\n");
+            }
         }
         return inputVolume;
     }
 
     private String inputStoredMaterial() {
         ConsoleUtil.print("Введите тип содержимого бочки:\n");
-        return ConsoleUtil.userStringInput();
+        String input;
+        while(true) {
+            input = ConsoleUtil.userStringInput();
+            if (input.isBlank()) {
+                ConsoleUtil.print("Параметр не может быть пустым. Введите корректные данные\n");
+                continue;
+            }
+            break;
+        }
+        return input;
     }
 
     private Barrel.BarrelMaterial inputBarrelMaterial() {
