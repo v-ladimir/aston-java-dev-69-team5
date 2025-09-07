@@ -4,7 +4,7 @@ import java.util.Comparator;
 import java.util.List;
 
 public class TimSort<T extends Comparable<T>> {
-    private static final int MIN_MERGE = 32;
+    private static final int MIN_MERGE = 64;
     private List<T> list;
     private Comparator<T> comparator;
     private Object[] temp;
