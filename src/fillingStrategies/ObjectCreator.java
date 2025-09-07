@@ -6,7 +6,6 @@ import fillingStrategies.random.*;
 import java.util.HashMap;
 import java.util.Map;
 
-
 public class ObjectCreator {
     private Map<String, ObjectCreatorStrategies> creators = new HashMap<>();;
 
