@@ -1,7 +1,7 @@
 package sort;
 
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
+import java.util.function.Function;
 
 public class TimSort<T extends Comparable<T>> {
     private static final int MIN_MERGE = 64;
@@ -138,5 +138,31 @@ public class TimSort<T extends Comparable<T>> {
             n >>= 1;
         }
         return n + r;
+    }
+
+    public List<T> sortModify(List<T> list, Comparator<T> comparator, Function<T, Integer> fieldExtractor) {
+        if (list == null || list.isEmpty()) {
+            throw new IllegalStateException("list cannot be empty");
+        }
+
+        List<Integer> evenPositions = new ArrayList<>();
+        List<T> evenElements = new ArrayList<>();
+
+
+        for (int i = 0; i < list.size(); i++) {
+            int numberField = fieldExtractor.apply(list.get(i));
+            if (numberField % 2 == 0) {
+                evenElements.add(list.get(i));
+                evenPositions.add(i);
+            }
+        }
+
+        evenElements = sort(evenElements, comparator);
+
+        for (int i = 0; i < evenElements.size(); i++) {
+            int evenPosition = evenPositions.get(i);
+            list.set(evenPosition, evenElements.get(i));
+        }
+        return list;
     }
 }
