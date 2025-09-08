@@ -9,12 +9,14 @@ public class SubMenuService {
     private final CollectionService collectionService;
     private final FillingService fillingService;
     private final FileWriterService fileWriterService;
+    private final SortService sortService;
 
     public SubMenuService(CollectionService collectionService) {
         this.scanner = new Scanner(System.in);
         this.collectionService = collectionService;
         this.fillingService = new FillingService(collectionService, scanner);
         this.fileWriterService = new FileWriterService(collectionService);
+        this.sortService = new SortService(collectionService);
     }
 
     // Подменю для выбора типа коллекции:
@@ -73,6 +75,33 @@ public class SubMenuService {
         fillingService.setFillingType(fillingType);
 
         fillingService.initCollection();
+    }
+
+    // Подменю для выбора метода сортировки:
+    // 1. Сортировка всех объектов коллекции
+    // 2. Сортировка только объектов с четным полем
+    public void showSortMenu() {
+        if (collectionService.getCollectionType().equals("Не выбрана")) {
+            System.out.println("Сначала выберите тип коллекции!");
+            return;
+        }
+
+        System.out.println("\n=== ВВОД ДАННЫХ ===");
+        System.out.println("0. Выйти в главное меню");
+        System.out.println("1. Сортировать все объекты коллекции");
+        System.out.println("2. Сортировать только объекты с четными полями");
+        System.out.print("Выберите способ: ");
+
+        int choice = ConsoleUtil.userIntInput(0, 2);
+
+        switch (choice) {
+            case 1 -> sortService.sortCollection();
+            case 2 -> sortService.sortCollectionModify();
+            case 0 -> {
+                return;
+            }
+            default -> throw new IllegalStateException("Неверный выбор: " + choice);
+        };
     }
 
     // Подменю для записи отсортированной коллекции или найденного бинарным поиском значения
