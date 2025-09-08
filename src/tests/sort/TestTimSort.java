@@ -1,16 +1,20 @@
 package tests.sort;
 
-import customClasses.Animal;
-import customClasses.Barrel;
-import customClasses.Person;
+import customClasses.*;
 import fillingStrategies.ListConstructor;
-import fillingStrategies.random.RandomAnimalGenerator;
-import fillingStrategies.random.RandomBarrelGenerator;
-import fillingStrategies.random.RandomPersonGenerator;
+import fillingStrategies.random.*;
 import sort.TimSort;
+import tests.Testing;
 
-public class TestTimSort {
+public class TestTimSort implements Testing {
+
     public static void main(String[] args) {
+        new TestTimSort().testFunction();
+    }
+
+    @Override
+    public void testFunction() {
+        System.out.println("Testing TimSort");
         ListConstructor<Animal> animalListConstructor = new ListConstructor<>(new RandomAnimalGenerator());
         TimSort<Animal> animalTimSort = new TimSort<>();
         animalTimSort.sort(animalListConstructor.getListSingleThread(10), Animal.getComparator())

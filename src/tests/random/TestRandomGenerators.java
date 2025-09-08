@@ -1,11 +1,17 @@
 package tests.random;
 
-import fillingStrategies.random.RandomAnimalGenerator;
-import fillingStrategies.random.RandomBarrelGenerator;
-import fillingStrategies.random.RandomPersonGenerator;
+import fillingStrategies.random.*;
+import tests.Testing;
 
-public class TestRandomGenerators {
+public class TestRandomGenerators implements Testing {
+
     public static void main(String[] args) {
+        new TestRandomGenerators().testFunction();
+    }
+
+    @Override
+    public void testFunction() {
+        System.out.println("Testing RandomGenerators");
         RandomAnimalGenerator genAnimal = new RandomAnimalGenerator();
         RandomBarrelGenerator genBarrel = new RandomBarrelGenerator();
         RandomPersonGenerator genPerson = new RandomPersonGenerator();

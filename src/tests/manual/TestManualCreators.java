@@ -1,11 +1,17 @@
 package tests.manual;
 
-import fillingStrategies.manual.ManualAnimalCreator;
-import fillingStrategies.manual.ManualBarrelCreator;
-import fillingStrategies.manual.ManualPersonCreator;
+import fillingStrategies.manual.*;
+import tests.Testing;
 
-public class TestManualCreators {
+public class TestManualCreators implements Testing {
+
     public static void main(String[] args) {
+        new TestManualCreators().testFunction();
+    }
+
+    @Override
+    public void testFunction() {
+        System.out.println("Testing ManualCreators");
         ManualAnimalCreator animalCreator = new ManualAnimalCreator();
         ManualBarrelCreator barrelCreator = new ManualBarrelCreator();
         ManualPersonCreator personCreator = new ManualPersonCreator();

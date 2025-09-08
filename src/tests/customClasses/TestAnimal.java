@@ -1,9 +1,17 @@
 package tests.customClasses;
 
 import customClasses.Animal;
+import tests.Testing;
 
-public class TestAnimal {
+public class TestAnimal implements Testing {
+
     public static void main(String[] args) {
+        new TestAnimal().testFunction();
+    }
+
+    @Override
+    public void testFunction() {
+        System.out.println("Testing Animal");
         System.out.println(new Animal.Builder()
                 .setSpecies("кот")
                 .setEyeColor("зелёный")

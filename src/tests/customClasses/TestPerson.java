@@ -1,9 +1,17 @@
 package tests.customClasses;
 
 import customClasses.Person;
+import tests.Testing;
 
-public class TestPerson {
+public class TestPerson implements Testing {
+
     public static void main(String[] args) {
+        new TestPerson();
+    }
+
+    @Override
+    public void testFunction() {
+        System.out.println("Testing Person");
         System.out.println(new Person.Builder()
                 .setGender(Person.Gender.MALE)
                 .setAge(1)

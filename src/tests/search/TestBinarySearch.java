@@ -1,19 +1,23 @@
 package tests.search;
 
-import customClasses.Animal;
-import customClasses.Barrel;
-import customClasses.Person;
+import customClasses.*;
 import fillingStrategies.ListConstructor;
-import fillingStrategies.random.RandomAnimalGenerator;
-import fillingStrategies.random.RandomBarrelGenerator;
-import fillingStrategies.random.RandomPersonGenerator;
+import fillingStrategies.random.*;
 import search.BinarySearch;
 import sort.TimSort;
+import tests.Testing;
 
 import java.util.List;
 
-public class TestBinarySearch {
+public class TestBinarySearch implements Testing {
+
     public static void main(String[] args) {
+        new TestBinarySearch().testFunction();
+    }
+
+    @Override
+    public void testFunction() {
+        System.out.println("Testing BinarySearch");
         ListConstructor<Animal> animalListConstructor = new ListConstructor<>(new RandomAnimalGenerator());
         TimSort<Animal> animalTimSort = new TimSort<>();
         List<Animal> animalSortList =

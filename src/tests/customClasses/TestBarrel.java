@@ -1,9 +1,17 @@
 package tests.customClasses;
 
 import customClasses.Barrel;
+import tests.Testing;
 
-public class TestBarrel {
+public class TestBarrel implements Testing {
+
     public static void main(String[] args) {
+        new TestBarrel().testFunction();
+    }
+
+    @Override
+    public void testFunction() {
+        System.out.println("Testing Barrel");
         System.out.println(new Barrel.Builder()
                 .setVolume(1)
                 .setStoredMaterial("вода")
