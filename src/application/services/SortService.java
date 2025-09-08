@@ -1,8 +1,6 @@
 package application.services;
 
-import customClasses.Animal;
-import customClasses.Barrel;
-import customClasses.Person;
+import customClasses.*;
 import sort.TimSort;
 
 public class SortService {

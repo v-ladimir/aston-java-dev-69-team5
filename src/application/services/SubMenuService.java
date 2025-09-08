@@ -7,13 +7,13 @@ import java.util.Scanner;
 public class SubMenuService {
     private final Scanner scanner;
     private final CollectionService collectionService;
-    private final InputService inputService;
+    private final FillingService fillingService;
     private final FileWriterService fileWriterService;
 
     public SubMenuService(CollectionService collectionService) {
         this.scanner = new Scanner(System.in);
         this.collectionService = collectionService;
-        this.inputService = new InputService(collectionService, scanner);
+        this.fillingService = new FillingService(collectionService, scanner);
         this.fileWriterService = new FileWriterService(collectionService);
     }
 
@@ -70,9 +70,9 @@ public class SubMenuService {
             }
             default -> throw new IllegalStateException("Неверный выбор: " + choice);
         };
-        inputService.setFillingType(fillingType);
+        fillingService.setFillingType(fillingType);
 
-        inputService.initCollection();
+        fillingService.initCollection();
     }
 
     // Подменю для записи отсортированной коллекции или найденного бинарным поиском значения

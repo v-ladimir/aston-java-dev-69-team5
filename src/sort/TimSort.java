@@ -3,7 +3,7 @@ package sort;
 import java.util.*;
 import java.util.function.Function;
 
-public class TimSort<T extends Comparable<T>> {
+public class TimSort<T> {
     private static final int MIN_MERGE = 64;
     private List<T> list;
     private Comparator<T> comparator;

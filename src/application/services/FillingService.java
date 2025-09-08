@@ -9,13 +9,13 @@ import java.util.List;
 import java.util.Scanner;
 
 // Сервис для работы с вводом данных
-public class InputService {
+public class FillingService {
     private final CollectionService collectionService;
     private final Scanner scanner;
     private ObjectCreator objectCreator;
     private String fillingType = "Не выбран";
 
-    public InputService(CollectionService collectionService, Scanner scanner) {
+    public FillingService(CollectionService collectionService, Scanner scanner) {
         this.collectionService = collectionService;
         this.scanner = scanner;
     }
@@ -35,7 +35,13 @@ public class InputService {
     }
 
     public void initCollection() {
-        setObjectCreator();
+        try {
+            setObjectCreator();
+        } catch (Exception e) {
+            System.out.println("Указан неверный путь к файлу или неподходящий формат данных");
+            return;
+        }
+
         if (objectCreator == null) {
             throw new IllegalStateException("Не удалось инициализировать объект для создания экземпляров коллекции");
         }
@@ -46,10 +52,15 @@ public class InputService {
         int count = ConsoleUtil.userIntInput(1, 1000000);
         List<?> list;
 
-        if (fillingType.equals("Random") && count > 100) {
-            list = new ListConstructor<>(objectCreator).getListMultyThread(count);
-        } else {
-            list = new ListConstructor<>(objectCreator).getListSingleThread(count);
+        try {
+            if (fillingType.equals("Random") && count > 100) {
+                list = new ListConstructor<>(objectCreator).getListMultyThread(count);
+            } else {
+                list = new ListConstructor<>(objectCreator).getListSingleThread(count);
+            }
+        } catch (Exception e) {
+            System.out.println("В файле не хватает данных");
+            return;
         }
 
         collectionService.setCollection(list);

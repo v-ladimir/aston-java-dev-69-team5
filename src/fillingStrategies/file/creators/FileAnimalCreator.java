@@ -5,6 +5,7 @@ import fillingStrategies.ObjectCreator;
 import customClasses.Animal;
 import fillingStrategies.file.util.ObjectFileReader;
 import fillingStrategies.file.parsers.AnimalParser;
+
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,11 +21,6 @@ public class FileAnimalCreator implements ObjectCreator<Animal> {
         initList();
     }
 
-//    public FileAnimalCreator() {
-//        this.path = Path.of("src/resources/data.txt");
-//        this.fileReader = new ObjectFileReader(path, new AnimalParser());
-//        initList();
-//    }
     public FileAnimalCreator() {
         this.path = Path.of(FileWriterService.chooseFilePath());
         this.fileReader = new ObjectFileReader(path, new AnimalParser());

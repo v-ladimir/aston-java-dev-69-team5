@@ -3,6 +3,8 @@ package fillingStrategies.manual;
 import fillingStrategies.ObjectCreator;
 import customClasses.Animal;
 
+import java.util.Scanner;
+
 public class ManualAnimalCreator implements ObjectCreator<Animal> {
 
     @Override
@@ -19,12 +21,12 @@ public class ManualAnimalCreator implements ObjectCreator<Animal> {
     }
 
     private String inputSpecies() {
-        ConsoleUtil.print("Введите вид животного:\n");
+        System.out.print("Введите вид животного: ");
         String input;
         while(true) {
-            input = ConsoleUtil.userStringInput();
+            input = new Scanner(System.in).nextLine();
             if (input.isBlank()) {
-                ConsoleUtil.print("Параметр не может быть пустым. Введите корректные данные\n");
+                System.out.println("Параметр не может быть пустым. Введите корректные данные.");
                 continue;
             }
             break;
@@ -33,12 +35,12 @@ public class ManualAnimalCreator implements ObjectCreator<Animal> {
     }
 
     private String inputEyeColor() {
-        ConsoleUtil.print("Введите цвет глаз:\n");
+        System.out.print("Введите цвет глаз: ");
         String input;
         while(true) {
-            input = ConsoleUtil.userStringInput();
+            input = new Scanner(System.in).nextLine();
             if (input.isBlank()) {
-                ConsoleUtil.print("Параметр не может быть пустым. Введите корректные данные\n");
+                System.out.println("Параметр не может быть пустым. Введите корректные данные.");
                 continue;
             }
             break;
@@ -47,10 +49,10 @@ public class ManualAnimalCreator implements ObjectCreator<Animal> {
     }
 
     private boolean inputHasFur() {
-        ConsoleUtil.print("Выберите имеет ли животное шерсть:\n");
-        ConsoleUtil.print("1. Имеет\n");
-        ConsoleUtil.print("2. Не имеет\n");
-        ConsoleUtil.print("Выбор пользователя:\n");
+        System.out.println("Выберите имеет ли животное шерсть:");
+        System.out.println("1. Имеет");
+        System.out.println("2. Не имеет");
+        System.out.print("Выбор пользователя: ");
         int userInput = ConsoleUtil.userIntInput(1, 2);
         return userInput == 1;
     }

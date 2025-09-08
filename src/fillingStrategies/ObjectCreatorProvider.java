@@ -1,32 +1,26 @@
 package fillingStrategies;
 
-import fillingStrategies.file.creators.FileAnimalCreator;
-import fillingStrategies.file.creators.FileBarrelCreator;
-import fillingStrategies.file.creators.FilePersonCreator;
-import fillingStrategies.manual.ManualAnimalCreator;
-import fillingStrategies.manual.ManualBarrelCreator;
-import fillingStrategies.manual.ManualPersonCreator;
-import fillingStrategies.random.RandomAnimalGenerator;
-import fillingStrategies.random.RandomBarrelGenerator;
-import fillingStrategies.random.RandomPersonGenerator;
+import fillingStrategies.file.creators.*;
+import fillingStrategies.manual.*;
+import fillingStrategies.random.*;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class ObjectCreatorProvider<T> {
+public class ObjectCreatorProvider {
     private Map<String, Supplier<ObjectCreator>> creators = new HashMap<>();;
 
     public ObjectCreatorProvider() {
-        creators.put("Животное+Manual", () -> new ManualAnimalCreator());
-        creators.put("Бочка+Manual", () -> new ManualBarrelCreator());
-        creators.put("Человек+Manual", () -> new ManualPersonCreator());
-        creators.put("Животное+Random", () -> new RandomAnimalGenerator());
-        creators.put("Бочка+Random", () -> new RandomBarrelGenerator());
-        creators.put("Человек+Random", () -> new RandomPersonGenerator());
-        creators.put("Животное+File", () -> new FileAnimalCreator());
-        creators.put("Бочка+File", () -> new FileBarrelCreator());
-        creators.put("Человек+File", () -> new FilePersonCreator());
+        creators.put("Животное+Manual", ManualAnimalCreator::new);
+        creators.put("Бочка+Manual", ManualBarrelCreator::new);
+        creators.put("Человек+Manual", ManualPersonCreator::new);
+        creators.put("Животное+Random", RandomAnimalGenerator::new);
+        creators.put("Бочка+Random", RandomBarrelGenerator::new);
+        creators.put("Человек+Random", RandomPersonGenerator::new);
+        creators.put("Животное+File", FileAnimalCreator::new);
+        creators.put("Бочка+File", FileBarrelCreator::new);
+        creators.put("Человек+File", FilePersonCreator::new);
     }
 
     public ObjectCreator getCreator(String keyMap) {

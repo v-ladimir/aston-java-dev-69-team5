@@ -71,8 +71,6 @@ public class ListConstructor<T> {
         long endTime = System.currentTimeMillis();
         long totalTime = endTime - startTime;
 
-        System.out.println("Сгеренировано (ThreadPool): " + size + " объектов за " + totalTime + " мс");
-
         return list;
     }
 }

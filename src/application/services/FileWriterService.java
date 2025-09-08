@@ -1,9 +1,9 @@
 package application.services;
 
 import fillingStrategies.file.util.ObjectFileWriter;
-import fillingStrategies.manual.ConsoleUtil;
 
 import java.nio.file.Path;
+import java.util.Scanner;
 
 // Сервис для записи отсортированной коллекции в файл и записи значения полученного бинарным поиском в файл.
 public class FileWriterService {
@@ -33,7 +33,7 @@ public class FileWriterService {
 
     public void saveSearchResultToFile() {
         if (collectionService.getSearchIndex() == -1) {
-            System.out.println("Отсутствует значение для записи в файл");
+            System.out.println("Отсутствует значение для записи в файл.");
             return;
         }
         path = chooseFilePath();
@@ -44,14 +44,17 @@ public class FileWriterService {
     }
 
     public void clearFile() {
-        path = chooseFilePath();
-        new ObjectFileWriter(Path.of(path)).clearFile();
-        System.out.println("Очищено содержимое файла: \n" + path);
-
+        try {
+            path = chooseFilePath();
+            new ObjectFileWriter(Path.of(path)).clearFile();
+            System.out.println("Очищено содержимое файла: \n" + path);
+        } catch (Exception e) {
+            System.out.println("Указан неверный путь к файлу.");
+        }
     }
 
     public static String chooseFilePath() {
-        System.out.println("Введите полный путь к файлу:");
-        return ConsoleUtil.userStringInput();
+        System.out.println("Введите полный путь к файлу: ");
+        return new Scanner(System.in).nextLine();
     }
 }

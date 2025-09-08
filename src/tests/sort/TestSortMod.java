@@ -1,9 +1,10 @@
-package tests;
+package tests.sort;
 
 import customClasses.Person;
 import fillingStrategies.ListConstructor;
 import fillingStrategies.random.RandomPersonGenerator;
 import sort.TimSort;
+import tests.Testing;
 
 import java.util.Comparator;
 import java.util.List;
@@ -16,8 +17,8 @@ public class TestSortMod implements Testing {
 
     @Override
     public void testFunction() {
-        List<Person> list = new ListConstructor<Person>(new RandomPersonGenerator()).getListSingleThread(10);
-        list.forEach(person -> System.out.println(person));
+        List<Person> list = new ListConstructor<>(new RandomPersonGenerator()).getListSingleThread(10);
+        list.forEach(System.out::println);
         System.out.println();
 
         Comparator<Person> comparatorByNumberField = Comparator.comparing(Person::getAge);
@@ -25,9 +26,7 @@ public class TestSortMod implements Testing {
 
         TimSort<Person> timSort = new TimSort<>();
         list = timSort.sortModify(list, comparatorByNumberField, getNumberField);
-        list.forEach(person -> System.out.println(person));
+        list.forEach(System.out::println);
         System.out.println();
-
-
     }
 }

@@ -3,6 +3,8 @@ package fillingStrategies.manual;
 import fillingStrategies.ObjectCreator;
 import customClasses.Person;
 
+import java.util.Scanner;
+
 public class ManualPersonCreator implements ObjectCreator<Person> {
 
     @Override
@@ -19,26 +21,26 @@ public class ManualPersonCreator implements ObjectCreator<Person> {
     }
 
     private Person.Gender inputGender() {
-        ConsoleUtil.print("Выберите пол:\n");
-        ConsoleUtil.print("1. Мужской\n");
-        ConsoleUtil.print("2. Женский\n");
-        ConsoleUtil.print("Выбор пользователя:\n");
+        System.out.println("Выберите пол:");
+        System.out.println("1. Мужской");
+        System.out.println("2. Женский");
+        System.out.print("Выбор пользователя:");
         int numGender = ConsoleUtil.userIntInput(1, 2);
         return numGender == 1 ? Person.Gender.MALE : Person.Gender.FEMALE;
     }
 
     private int inputAge() {
-        ConsoleUtil.print("Введите возраст:\n");
+        System.out.print("Введите возраст: ");
         return ConsoleUtil.userIntInput(0, 100);
     }
 
     private String inputLastName() {
-        ConsoleUtil.print("Введите фамилию:\n");
+        System.out.print("Введите фамилию: ");
         String input;
         while(true) {
-            input = ConsoleUtil.userStringInput();
+            input = new Scanner(System.in).nextLine();
             if (input.isBlank()) {
-                ConsoleUtil.print("Параметр не может быть пустым. Введите корректные данные\n");
+                System.out.println("Параметр не может быть пустым. Введите корректные данные.");
                 continue;
             }
             break;

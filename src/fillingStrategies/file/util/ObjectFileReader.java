@@ -17,11 +17,6 @@ public class ObjectFileReader<T> {
         this.parser = parser;
     }
 
-    public ObjectFileReader(Parser<T> parser) {
-        this.path = Path.of("src/resources/data.txt");
-        this.parser = parser;
-    }
-
     public List<T> read() {
         List<T> listObjects = new ArrayList<>();
         try {

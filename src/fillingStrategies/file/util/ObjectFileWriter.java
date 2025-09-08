@@ -12,10 +12,6 @@ public class ObjectFileWriter {
         this.path = path;
     }
 
-    public ObjectFileWriter() {
-        this.path = Path.of("src/resources/data.txt");
-    }
-
     public void write(Object object) {
         String objectData = object.toString() + "\n";
         try {
@@ -32,6 +28,4 @@ public class ObjectFileWriter {
             throw new RuntimeException(e);
         }
     }
-
-
 }

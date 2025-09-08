@@ -1,11 +1,7 @@
 package application.services;
 
-import customClasses.Animal;
-import customClasses.Barrel;
-import customClasses.Person;
-import fillingStrategies.manual.ManualAnimalCreator;
-import fillingStrategies.manual.ManualBarrelCreator;
-import fillingStrategies.manual.ManualPersonCreator;
+import customClasses.*;
+import fillingStrategies.manual.*;
 import search.BinarySearch;
 
 import java.util.List;
@@ -27,7 +23,7 @@ public class SearchService {
             System.out.println("Коллекция не отсортирована! Сначала отсортируйте её.");
             return index;
         }
-        System.out.print("Введите данные объекта для поиска: ");
+        System.out.println("Введите данные объекта для поиска: ");
 
         switch (collectionService.getCollectionType()) {
             case "Животное" ->

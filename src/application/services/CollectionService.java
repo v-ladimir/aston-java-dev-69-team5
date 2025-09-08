@@ -1,8 +1,6 @@
 package application.services;
 
-import customClasses.Animal;
-import customClasses.Barrel;
-import customClasses.Person;
+import customClasses.*;
 
 import java.util.ArrayList;
 import java.util.List;

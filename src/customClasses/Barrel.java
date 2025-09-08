@@ -151,6 +151,7 @@ public class Barrel implements Comparable<Barrel> {
 
     @Override
     public String toString() {
-        return "Объем бочки - " + volume + ", тип содержимого - " + storedMaterial + ", материал бочки - " + barrelMaterial.displayName;
+        return "Объем бочки - " + volume + ", тип содержимого - " + storedMaterial
+                + ", материал бочки - " + barrelMaterial.displayName;
     }
 }
