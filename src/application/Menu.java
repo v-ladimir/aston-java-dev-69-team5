@@ -6,14 +6,12 @@ import fillingStrategies.manual.ConsoleUtil;
 public class Menu {
     private final CollectionService collectionService;
     private final OutputService outputService;
-    private final SortService sortService;
     private final SearchService searchService;
     private final SubMenuService subMenuService;
 
     public Menu() {
         this.collectionService = new CollectionService();
         this.outputService = new OutputService(collectionService);
-        this.sortService = new SortService(collectionService, outputService);
         this.searchService = new SearchService(collectionService);
         this.subMenuService = new SubMenuService(collectionService);
     }
@@ -37,7 +35,7 @@ public class Menu {
                 case 1 -> subMenuService.showSelectCollectionTypeMenu();
                 case 2 -> subMenuService.showInputMenu();
                 case 3 -> outputService.showCollection();
-                case 4 -> sortService.sortCollection();
+                case 4 -> subMenuService.showSortMenu();
                 case 5 -> searchService.searchInCollection();
                 case 6 -> subMenuService.showFileWriterMenu();
                 case 7 -> {

@@ -3,15 +3,15 @@ package application.services;
 import customClasses.*;
 import sort.TimSort;
 
+import java.util.function.Function;
+
 public class SortService {
     private final CollectionService collectionService;
-    private final OutputService outputService;
 
-    public SortService(CollectionService collectionService, OutputService outputService) {
+    public SortService(CollectionService collectionService) {
         this.collectionService = collectionService;
-        this.outputService = outputService;
     }
-    // Метод для работы с сортировкой коллекции
+
     public void sortCollection() {
         if (collectionService.isEmpty()) {
             System.out.println("Коллекция пуста!");
@@ -24,5 +24,24 @@ public class SortService {
             case "Человек" -> timSort.sort(collectionService.getCollection(), Person.getComparator());
         }
         System.out.println("Коллекция отсортирована");
+    }
+
+    public void sortCollectionModify() {
+        if (collectionService.isEmpty()) {
+            System.out.println("Коллекция пуста!");
+            return;
+        }
+        TimSort timSort = new TimSort();
+        switch (collectionService.getCollectionType()) {
+            case "Животное" -> System.out.println("У класса типа Animal нет целочисленного поля." +
+                    "\nСортировка не может быть выполнена");
+            case "Бочка" -> System.out.println("У класса типа Barrel нет целочисленного поля." +
+                    "\nСортировка не может быть выполнена");
+            case "Человек" -> {
+                Function<Person, Integer> getNumberField = Person::getAge;
+                timSort.sortModify(collectionService.getCollection(), Person.getComparator(), getNumberField);
+                System.out.println("Отсортированы объекты коллекции только с четным числовым полем");
+            }
+        }
     }
 }
