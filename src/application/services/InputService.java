@@ -43,7 +43,7 @@ public class InputService {
         collectionService.clearCollection();
 
         System.out.print("Введите количество элементов для создания коллекции: ");
-        int count = ConsoleUtil.userIntInput(1, 1000);
+        int count = ConsoleUtil.userIntInput(1, 1000000);
         List<?> list;
 
         if (fillingType.equals("Random") && count > 100) {
