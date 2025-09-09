@@ -1,14 +1,16 @@
 package application.services;
 
-import fillingStrategies.file.util.ObjectFileWriter;
+import util.ConsoleUtil;
+import util.ObjectFileWriter;
 
+import java.nio.file.InvalidPathException;
 import java.nio.file.Path;
 import java.util.Scanner;
 
 // Сервис для записи отсортированной коллекции в файл и записи значения полученного бинарным поиском в файл.
 public class FileWriterService {
     private final CollectionService collectionService;
-    private String path;
+    private Path path;
 
     public FileWriterService(CollectionService collectionService) {
         this.collectionService = collectionService;
@@ -24,7 +26,7 @@ public class FileWriterService {
             return;
         }
         path = chooseFilePath();
-        ObjectFileWriter testWriter = new ObjectFileWriter(Path.of(path));
+        ObjectFileWriter testWriter = new ObjectFileWriter(path);
         for (int i = 0; i < collectionService.getSize(); i++) {
             testWriter.write(collectionService.getCollection().get(i));
         }
@@ -37,7 +39,7 @@ public class FileWriterService {
             return;
         }
         path = chooseFilePath();
-        ObjectFileWriter testWriter = new ObjectFileWriter(Path.of(path));
+        ObjectFileWriter testWriter = new ObjectFileWriter(path);
         testWriter.write(collectionService.getCollection().get(collectionService.getSearchIndex()));
         System.out.println("Найденное значение записано в файл: " + path);
         collectionService.searchIndexReset();
@@ -46,15 +48,24 @@ public class FileWriterService {
     public void clearFile() {
         try {
             path = chooseFilePath();
-            new ObjectFileWriter(Path.of(path)).clearFile();
+            new ObjectFileWriter(path).clearFile();
             System.out.println("Очищено содержимое файла: \n" + path);
         } catch (Exception e) {
             System.out.println("Указан неверный путь к файлу.");
         }
     }
 
-    public static String chooseFilePath() {
+    public static Path chooseFilePath() {
         System.out.println("Введите полный путь к файлу: ");
-        return new Scanner(System.in).nextLine();
+        Path path;
+        while (true) {
+            try {
+                path = Path.of(ConsoleUtil.userStringInput());
+                break;
+            } catch (InvalidPathException e) {
+                System.out.println("Задан некорректный путь к файлу. Повторите ввод: ");
+            }
+        }
+        return path;
     }
 }

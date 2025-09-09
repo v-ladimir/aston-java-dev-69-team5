@@ -1,6 +1,6 @@
 package application.services;
 
-import fillingStrategies.manual.ConsoleUtil;
+import util.ConsoleUtil;
 
 import java.util.Scanner;
 
@@ -14,7 +14,7 @@ public class SubMenuService {
     public SubMenuService(CollectionService collectionService) {
         this.scanner = new Scanner(System.in);
         this.collectionService = collectionService;
-        this.fillingService = new FillingService(collectionService, scanner);
+        this.fillingService = new FillingService(collectionService);
         this.fileWriterService = new FileWriterService(collectionService);
         this.sortService = new SortService(collectionService);
     }

@@ -1,6 +1,6 @@
 package tests.manual;
 
-import fillingStrategies.manual.ConsoleUtil;
+import util.ConsoleUtil;
 import tests.Testing;
 
 public class TestConsoleUtil implements Testing {

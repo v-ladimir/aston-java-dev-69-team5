@@ -1,4 +1,4 @@
-package fillingStrategies.manual;
+package util;
 
 import java.util.Scanner;
 
@@ -25,5 +25,9 @@ public class ConsoleUtil {
             validInput = true;
         }
         return input;
+    }
+
+    public static String userStringInput() {
+        return scanner.nextLine();
     }
 }

@@ -2,6 +2,7 @@ package fillingStrategies.manual;
 
 import fillingStrategies.ObjectCreator;
 import customClasses.Person;
+import util.ConsoleUtil;
 
 import java.util.Scanner;
 
@@ -9,6 +10,7 @@ public class ManualPersonCreator implements ObjectCreator<Person> {
 
     @Override
     public Person createObject() {
+        System.out.println("Заполните данные для создания объекта");
         Person.Gender gender = inputGender();
         int age = inputAge();
         String lastName = inputLastName();
@@ -38,7 +40,7 @@ public class ManualPersonCreator implements ObjectCreator<Person> {
         System.out.print("Введите фамилию: ");
         String input;
         while(true) {
-            input = new Scanner(System.in).nextLine();
+            input = ConsoleUtil.userStringInput();
             if (input.isBlank()) {
                 System.out.println("Параметр не может быть пустым. Введите корректные данные.");
                 continue;

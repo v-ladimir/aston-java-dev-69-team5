@@ -4,7 +4,7 @@ import application.services.FileWriterService;
 import customClasses.CustomArrayListImpl;
 import fillingStrategies.ObjectCreator;
 import customClasses.Barrel;
-import fillingStrategies.file.util.ObjectFileReader;
+import util.ObjectFileReader;
 import fillingStrategies.file.parsers.BarrelParser;
 
 import java.nio.file.Path;
@@ -22,7 +22,7 @@ public class FileBarrelCreator implements ObjectCreator<Barrel> {
     }
 
     public FileBarrelCreator() {
-        this.path = Path.of(FileWriterService.chooseFilePath());
+        this.path = FileWriterService.chooseFilePath();
         this.fileReader = new ObjectFileReader(path, new BarrelParser());
         initList();
     }

@@ -3,21 +3,18 @@ package application.services;
 import fillingStrategies.ListConstructor;
 import fillingStrategies.ObjectCreatorProvider;
 import fillingStrategies.ObjectCreator;
-import fillingStrategies.manual.ConsoleUtil;
+import util.ConsoleUtil;
 
 import java.util.List;
-import java.util.Scanner;
 
 // Сервис для работы с вводом данных
 public class FillingService {
     private final CollectionService collectionService;
-    private final Scanner scanner;
     private ObjectCreator objectCreator;
     private String fillingType = "Не выбран";
 
-    public FillingService(CollectionService collectionService, Scanner scanner) {
+    public FillingService(CollectionService collectionService) {
         this.collectionService = collectionService;
-        this.scanner = scanner;
     }
 
     public String getFillingType() {

@@ -1,7 +1,7 @@
 package application;
 
 import application.services.*;
-import fillingStrategies.manual.ConsoleUtil;
+import util.ConsoleUtil;
 
 public class Menu {
     private final CollectionService collectionService;

@@ -4,7 +4,7 @@ import application.services.FileWriterService;
 import customClasses.CustomArrayListImpl;
 import fillingStrategies.ObjectCreator;
 import customClasses.Animal;
-import fillingStrategies.file.util.ObjectFileReader;
+import util.ObjectFileReader;
 import fillingStrategies.file.parsers.AnimalParser;
 
 import java.nio.file.Path;
@@ -22,7 +22,7 @@ public class FileAnimalCreator implements ObjectCreator<Animal> {
     }
 
     public FileAnimalCreator() {
-        this.path = Path.of(FileWriterService.chooseFilePath());
+        this.path = FileWriterService.chooseFilePath();
         this.fileReader = new ObjectFileReader(path, new AnimalParser());
         initList();
     }

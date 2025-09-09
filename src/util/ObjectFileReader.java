@@ -1,4 +1,4 @@
-package fillingStrategies.file.util;
+package util;
 
 import customClasses.CustomArrayListImpl;
 import fillingStrategies.file.parsers.Parser;

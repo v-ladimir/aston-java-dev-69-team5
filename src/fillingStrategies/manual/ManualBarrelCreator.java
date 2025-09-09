@@ -2,6 +2,7 @@ package fillingStrategies.manual;
 
 import fillingStrategies.ObjectCreator;
 import customClasses.Barrel;
+import util.ConsoleUtil;
 
 import java.util.Scanner;
 
@@ -9,6 +10,7 @@ public class ManualBarrelCreator implements ObjectCreator<Barrel> {
 
     @Override
     public Barrel createObject() {
+        System.out.println("Заполните данные для создания объекта");
         double volume = inputVolume();
         String storedMaterial = inputStoredMaterial();
         Barrel.BarrelMaterial barrelMaterial = inputBarrelMaterial();
@@ -27,9 +29,9 @@ public class ManualBarrelCreator implements ObjectCreator<Barrel> {
         int maxValue = 1000;
         while (true) {
             try {
-                inputVolume = Double.parseDouble(new Scanner(System.in).nextLine());
+                inputVolume = Double.parseDouble(ConsoleUtil.userStringInput());
                 if(inputVolume <= minValue || inputVolume > maxValue) {
-                    System.out.printf("Некорректный ввод. Объем должен быть в диапазоне %d - %d\n%n", minValue, maxValue);
+                    System.out.printf("Некорректный ввод. Объем должен быть в диапазоне %d - %d%n", minValue, maxValue);
                     continue;
                 }
                 break;
@@ -44,7 +46,7 @@ public class ManualBarrelCreator implements ObjectCreator<Barrel> {
         System.out.println("Введите тип содержимого бочки:");
         String input;
         while(true) {
-            input = new Scanner(System.in).nextLine();
+            input = ConsoleUtil.userStringInput();
             if (input.isBlank()) {
                 System.out.println("Параметр не может быть пустым. Введите корректные данные");
                 continue;
@@ -58,7 +60,7 @@ public class ManualBarrelCreator implements ObjectCreator<Barrel> {
         System.out.println("Выберите материал из которого изготовлена бочка: ");
         int pointsNumber = Barrel.BarrelMaterial.values().length;
         for (int i = 0; i < pointsNumber; i++) {
-            System.out.printf("%d. %s%n", i + 1, Barrel.BarrelMaterial.values()[i]);
+            System.out.printf("%d. %s%n", i + 1, Barrel.BarrelMaterial.values()[i].getDisplayName());
         }
         System.out.print("Ввод пользователя: ");
         int userInput = ConsoleUtil.userIntInput(1, pointsNumber);

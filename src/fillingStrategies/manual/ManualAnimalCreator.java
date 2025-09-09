@@ -2,6 +2,7 @@ package fillingStrategies.manual;
 
 import fillingStrategies.ObjectCreator;
 import customClasses.Animal;
+import util.ConsoleUtil;
 
 import java.util.Scanner;
 
@@ -9,6 +10,7 @@ public class ManualAnimalCreator implements ObjectCreator<Animal> {
 
     @Override
     public Animal createObject() {
+        System.out.println("Заполните данные для создания объекта");
         String species = inputSpecies();
         String eyeColor = inputEyeColor();
         boolean hasFur = inputHasFur();
@@ -24,7 +26,7 @@ public class ManualAnimalCreator implements ObjectCreator<Animal> {
         System.out.print("Введите вид животного: ");
         String input;
         while(true) {
-            input = new Scanner(System.in).nextLine();
+            input = ConsoleUtil.userStringInput();
             if (input.isBlank()) {
                 System.out.println("Параметр не может быть пустым. Введите корректные данные.");
                 continue;
@@ -38,7 +40,7 @@ public class ManualAnimalCreator implements ObjectCreator<Animal> {
         System.out.print("Введите цвет глаз: ");
         String input;
         while(true) {
-            input = new Scanner(System.in).nextLine();
+            input = ConsoleUtil.userStringInput();
             if (input.isBlank()) {
                 System.out.println("Параметр не может быть пустым. Введите корректные данные.");
                 continue;

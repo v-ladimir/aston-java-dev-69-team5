@@ -2,8 +2,8 @@ package tests.WritingToFile;
 
 import customClasses.Animal;
 import fillingStrategies.file.parsers.AnimalParser;
-import fillingStrategies.file.util.ObjectFileReader;
-import fillingStrategies.file.util.ObjectFileWriter;
+import util.ObjectFileReader;
+import util.ObjectFileWriter;
 import fillingStrategies.random.RandomAnimalGenerator;
 import tests.Testing;
 

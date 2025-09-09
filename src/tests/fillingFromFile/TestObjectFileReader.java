@@ -2,7 +2,7 @@ package tests.fillingFromFile;
 
 import customClasses.*;
 import fillingStrategies.file.parsers.*;
-import fillingStrategies.file.util.ObjectFileReader;
+import util.ObjectFileReader;
 import tests.Testing;
 
 import java.nio.file.Path;

@@ -1,4 +1,4 @@
-package fillingStrategies.file.util;
+package util;
 
 import java.io.IOException;
 import java.nio.file.Files;
