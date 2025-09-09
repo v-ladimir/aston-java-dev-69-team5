@@ -1,11 +1,11 @@
 package fillingStrategies.file.util;
 
+import customClasses.CustomArrayListImpl;
 import fillingStrategies.file.parsers.Parser;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ObjectFileReader<T> {
@@ -18,7 +18,7 @@ public class ObjectFileReader<T> {
     }
 
     public List<T> read() {
-        List<T> listObjects = new ArrayList<>();
+        List<T> listObjects = new CustomArrayListImpl<>();
         try {
             List<String> data = Files.readAllLines(path);
             for (String s : data) {

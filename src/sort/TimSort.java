@@ -1,6 +1,9 @@
 package sort;
 
-import java.util.*;
+import customClasses.CustomArrayListImpl;
+
+import java.util.Comparator;
+import java.util.List;
 import java.util.function.Function;
 
 public class TimSort<T> {
@@ -145,8 +148,8 @@ public class TimSort<T> {
             throw new IllegalStateException("list cannot be empty");
         }
 
-        List<Integer> evenPositions = new ArrayList<>();
-        List<T> evenElements = new ArrayList<>();
+        List<Integer> evenPositions = new CustomArrayListImpl<>();
+        List<T> evenElements = new CustomArrayListImpl<>();
 
 
         for (int i = 0; i < list.size(); i++) {
