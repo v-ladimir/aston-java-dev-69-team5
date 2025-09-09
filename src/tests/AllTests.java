@@ -1,5 +1,6 @@
 package tests;
 
+import customClasses.CustomArrayListImpl;
 import tests.WritingToFile.TestObjectFileWriter;
 import tests.customClasses.*;
 import tests.fillingFromFile.*;
@@ -8,11 +9,10 @@ import tests.random.TestRandomGenerators;
 import tests.search.TestBinarySearch;
 import tests.sort.TestTimSort;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class AllTests {
-    private static List<Testing> tests = new ArrayList<>();
+    private static List<Testing> tests = new CustomArrayListImpl<>();
 
     static {
         tests.add(new TestAnimal());

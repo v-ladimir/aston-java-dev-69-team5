@@ -1,19 +1,19 @@
 package fillingStrategies.file.creators;
 
 import application.services.FileWriterService;
+import customClasses.CustomArrayListImpl;
 import fillingStrategies.ObjectCreator;
 import customClasses.Animal;
 import fillingStrategies.file.util.ObjectFileReader;
 import fillingStrategies.file.parsers.AnimalParser;
 
 import java.nio.file.Path;
-import java.util.ArrayList;
 import java.util.List;
 
 public class FileAnimalCreator implements ObjectCreator<Animal> {
     private Path path;
     private ObjectFileReader fileReader;
-    private List<Animal> listObjectsFromFile = new ArrayList<>();
+    private List<Animal> listObjectsFromFile = new CustomArrayListImpl<>();
 
     public FileAnimalCreator(Path path) {
         this.path = path;

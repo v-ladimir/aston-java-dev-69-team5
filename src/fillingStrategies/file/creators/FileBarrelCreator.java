@@ -1,19 +1,19 @@
 package fillingStrategies.file.creators;
 
 import application.services.FileWriterService;
+import customClasses.CustomArrayListImpl;
 import fillingStrategies.ObjectCreator;
 import customClasses.Barrel;
 import fillingStrategies.file.util.ObjectFileReader;
 import fillingStrategies.file.parsers.BarrelParser;
 
 import java.nio.file.Path;
-import java.util.ArrayList;
 import java.util.List;
 
 public class FileBarrelCreator implements ObjectCreator<Barrel> {
     private Path path;
     private ObjectFileReader fileReader;
-    private List<Barrel> listObjectsFromFile = new ArrayList<>();
+    private List<Barrel> listObjectsFromFile = new CustomArrayListImpl<>();
 
     public FileBarrelCreator(Path path) {
         this.path = path;

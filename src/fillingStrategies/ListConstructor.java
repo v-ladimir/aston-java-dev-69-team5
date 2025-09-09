@@ -1,6 +1,7 @@
 package fillingStrategies;
 
-import java.util.ArrayList;
+import customClasses.CustomArrayListImpl;
+
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.*;
@@ -37,7 +38,7 @@ public class ListConstructor<T> {
         return Stream
                 .generate(() -> objectCreator.createObject())
                 .limit(size)
-                .collect(Collectors.toList());
+                .collect(Collectors.toCollection(CustomArrayListImpl::new));
     }
 
     public List<T> getListMultyThread(int size) {
@@ -48,7 +49,7 @@ public class ListConstructor<T> {
             throw new IllegalArgumentException("Size must be > 0");
         }
 
-        List<T> list = Collections.synchronizedList(new ArrayList<>(size));
+        List<T> list = Collections.synchronizedList(new CustomArrayListImpl<>(size));
 
         int availableProcessors = Runtime.getRuntime().availableProcessors();
 

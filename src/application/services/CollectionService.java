@@ -2,7 +2,6 @@ package application.services;
 
 import customClasses.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 // Сервис для работы с коллекцией
@@ -14,9 +13,9 @@ public class CollectionService {
     public void setCollectionType(String type) {
         this.collectionType = type;
         switch (type) {
-            case "Животное" -> collection = new ArrayList<Animal>();
-            case "Бочка" -> collection = new ArrayList<Barrel>();
-            case "Человек" -> collection = new ArrayList<Person>();
+            case "Животное" -> collection = new CustomArrayListImpl<Animal>();
+            case "Бочка" -> collection = new CustomArrayListImpl<Barrel>();
+            case "Человек" -> collection = new CustomArrayListImpl<Person>();
         }
     }
 

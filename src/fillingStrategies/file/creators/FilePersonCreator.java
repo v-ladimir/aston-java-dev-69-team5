@@ -1,19 +1,19 @@
 package fillingStrategies.file.creators;
 
 import application.services.FileWriterService;
+import customClasses.CustomArrayListImpl;
 import fillingStrategies.ObjectCreator;
 import customClasses.Person;
 import fillingStrategies.file.util.ObjectFileReader;
 import fillingStrategies.file.parsers.PersonParser;
 
 import java.nio.file.Path;
-import java.util.ArrayList;
 import java.util.List;
 
 public class FilePersonCreator implements ObjectCreator<Person> {
     private Path path;
     private ObjectFileReader fileReader;
-    private List<Person> listObjectsFromFile = new ArrayList<>();
+    private List<Person> listObjectsFromFile = new CustomArrayListImpl<>();
 
     public FilePersonCreator(Path path) {
         this.path = path;

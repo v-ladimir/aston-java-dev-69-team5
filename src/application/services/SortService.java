@@ -3,6 +3,7 @@ package application.services;
 import customClasses.*;
 import sort.TimSort;
 
+import java.util.Comparator;
 import java.util.function.Function;
 
 public class SortService {
@@ -38,8 +39,9 @@ public class SortService {
             case "Бочка" -> System.out.println("У класса типа Barrel нет целочисленного поля." +
                     "\nСортировка не может быть выполнена");
             case "Человек" -> {
+                Comparator<Person> comparatorByNumberField = Comparator.comparing(Person::getAge);
                 Function<Person, Integer> getNumberField = Person::getAge;
-                timSort.sortModify(collectionService.getCollection(), Person.getComparator(), getNumberField);
+                timSort.sortModify(collectionService.getCollection(), comparatorByNumberField, getNumberField);
                 System.out.println("Отсортированы объекты коллекции только с четным числовым полем");
             }
         }
