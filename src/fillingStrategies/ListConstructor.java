@@ -52,25 +52,18 @@ public class ListConstructor<T> {
         List<T> list = Collections.synchronizedList(new CustomArrayListImpl<>(size));
 
         int availableProcessors = Runtime.getRuntime().availableProcessors();
-
         ExecutorService pool = Executors.newFixedThreadPool(availableProcessors + 1);
-
-        long startTime = System.currentTimeMillis();
 
         for (int i = 0; i < size; i++) {
             pool.execute(() -> list.add(objectCreator.createObject()));
         }
 
         pool.shutdown();
-
         try {
             pool.awaitTermination(1, TimeUnit.MINUTES);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-
-        long endTime = System.currentTimeMillis();
-        long totalTime = endTime - startTime;
 
         return list;
     }
